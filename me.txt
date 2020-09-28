@@ -42,4 +42,5 @@ Pages, Routing và Layouts
         nuxt.config.js là file cấu hình cho toàn bộ hệ thống của nuxtjs cho phép cấu hình thêm các 
             phần tử khác liên quan 
             components: true, tự động load hết các components có trong thư mục components 
-        
+    Dynamic Routes
+    
