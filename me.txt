@@ -33,4 +33,13 @@ Cài đặt NuxtJs và môi trường lập trình
     Extension 
         Vetur 
         Vue VSCode Snippets 
-    
+Cấu trúc thư mục NuxtJs
+    Directory Structure
+So sánh SSR và CSR
+Pages, Routing và Layouts
+    Page & Config
+        File System Routing
+        nuxt.config.js là file cấu hình cho toàn bộ hệ thống của nuxtjs cho phép cấu hình thêm các 
+            phần tử khác liên quan 
+            components: true, tự động load hết các components có trong thư mục components 
+        
