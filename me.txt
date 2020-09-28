@@ -1,0 +1,36 @@
+                                    NuxtJs cơ bản
+                            
+Cài đặt NuxtJs và môi trường lập trình
+    https://nuxtjs.org/
+    node -v 
+    npm -v 
+    Using create-nuxt-app
+    yarn create nuxt-app first-nuxtjs 
+        ? Project name: first-nuxtjs
+        ? Programming language: JavaScript 
+        ? Package manager: Yarn
+        ? UI framework: None
+        ? Nuxt.js modules: (Press <space> to select, <a> to toggle all, <i> to invert selection)
+            Axios
+        ? Linting tools: (Press <space> to select, <a> to toggle all, <i> to invert selection)
+            ESLint
+        ? Testing framework: None
+        ? Rendering mode: Universal (SSR / SSG)
+        ? Deployment target: Server (Node.js hosting)
+        ? Development tools: (Press <space> to select, <a> to toggle all, <i> to invert selection)
+            jsconfig.json
+        ? Version control system: None
+    cd first-nuxtjs
+    yarn dev
+    To get started:
+        cd first-nuxtjs
+        yarn dev
+    To build & start for production:
+        cd first-nuxtjs
+        yarn build
+        yarn start
+    http://localhost:3000/
+    Extension 
+        Vetur 
+        Vue VSCode Snippets 
+    
