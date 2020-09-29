@@ -50,4 +50,5 @@ Pages, Routing và Layouts
         NuxtChild
         Nuxt child component
         <NuxtChild />
+    Nuxt Link
     
