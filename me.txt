@@ -102,4 +102,9 @@ Meta Tags và SEO
     Locally using the head as a function so that you have access to data and computed properties.
     Open graph 
     You can also pass each resource an optional body: true to include the resource before the closing </body> tag.
+Custom Loading Pages
+    throttle: 1000,
+        Quy định độ trễ khi hiển thị thanh progress bar
+    Using a Custom Loading Component
+    https://loading.io/
     

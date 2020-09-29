@@ -1,4 +1,11 @@
 export default {
+  loading: {
+    color: 'blue',
+    height: '5px',
+    duration: 3000,
+    continuous: true,
+    throttle: 1000,
+  },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'Demo Meta Tags va SEO NuxtJs',

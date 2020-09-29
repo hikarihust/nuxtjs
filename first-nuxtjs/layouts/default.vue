@@ -3,6 +3,8 @@
     <header><h1>Header</h1></header>
     <ul>
       <li><nuxt-link to="/scroll/long-page">Long Page</nuxt-link></li>
+      <li><nuxt-link to="/scroll/another-long-page">Another Long Page</nuxt-link></li>
+      <li><nuxt-link to="/custom-loading">Custom Loading</nuxt-link></li>
     </ul>
     <Nuxt />
     <footer><h1>Footer</h1></footer>
