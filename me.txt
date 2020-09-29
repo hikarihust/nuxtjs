@@ -60,4 +60,14 @@ Dynamic Layouts
     Dynamic Layouts
         req: Được truyền từ client lên Server nên chỉ tồn tại phía Server không tồn tại phía client 
     Error Page
-    
+Routes Middleware và Server Middleware
+    Routes Middleware
+        In your nuxt.config.js, use the router.middleware key.
+        Nuxt InitConfig -> Middleware
+        Nếu khai báo middleware ở trong component thì meyhod layout() trong component đó sẽ được thực hiện 
+            trước rồi sau đó đến middleware
+    Server Middleware
+        Chỉ chạy được ở phía Server mà thôi 
+        Middleware chạy được ở cả 2 phía, ở lần truy cập đầu tiên thì chạy ở phía Server còn ở các lần sau 
+            sẽ chạy ở phía client 
+        

@@ -29,18 +29,10 @@
 
 <script>
 export default {
+  middleware: [ 'check-visit' ],
   layout(context) {
-    let userAgent = '';
-    if(context.req) {
-      userAgent = context.req.headers['user-agent'];
-    } else {
-      userAgent = navigator.userAgent;
-    }
-    if(/mobile/i.test(userAgent)) {
-      return 'mobile';
-    }
-
-    return 'admin';
+    console.log("[layout users.vue]", Object.keys(context));
+    return context.isMobile ? 'mobile' : 'admin';
   }
 }
 </script>
