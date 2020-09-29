@@ -1,11 +1,21 @@
 <template>
   <div class="root">
     <header><h1>Header</h1></header>
+    <ul>
+      <li><nuxt-link to="/scroll/long-page">Long Page</nuxt-link></li>
+    </ul>
     <Nuxt />
     <footer><h1>Footer</h1></footer>
     <notifications group="foo" />
   </div>
 </template>
+
+<script>
+import { mapState, mapActions } from 'vuex';
+export default {
+  scrollToTop: true,
+}
+</script>
 
 <style>
 .root {

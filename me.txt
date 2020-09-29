@@ -85,4 +85,6 @@ Plugins trong NuxtJs
             Vue.use(Notifications)
             context: Nhúng vào object context
             inject: Nhúng vào trong đối tượng View
+Scrolls và Transition
+    Scrolls
     
