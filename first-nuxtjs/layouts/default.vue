@@ -1,10 +1,15 @@
 <template>
-  <div>
+  <div class="root">
+    <header><h1>Header</h1></header>
     <Nuxt />
+    <footer><h1>Footer</h1></footer>
   </div>
 </template>
 
 <style>
+.root {
+  padding: 50px;
+}
 html {
   font-family:
     'Source Sans Pro',

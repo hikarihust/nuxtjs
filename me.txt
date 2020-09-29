@@ -55,4 +55,5 @@ Pages, Routing và Layouts
         Không có trong Vuejs
         Có thể kiểm soát được route người dùng nhập vào có đúng hay không
         // '20a' -> NaN -> false -> !false -> true
+    Layouts
     
