@@ -56,4 +56,7 @@ Pages, Routing và Layouts
         Có thể kiểm soát được route người dùng nhập vào có đúng hay không
         // '20a' -> NaN -> false -> !false -> true
     Layouts
+Dynamic Layouts
+    Dynamic Layouts
+        req: Được truyền từ client lên Server nên chỉ tồn tại phía Server không tồn tại phía client 
     

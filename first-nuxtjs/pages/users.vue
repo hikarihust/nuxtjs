@@ -29,7 +29,19 @@
 
 <script>
 export default {
-  layout: 'admin',
+  layout(context) {
+    let userAgent = '';
+    if(context.req) {
+      userAgent = context.req.headers['user-agent'];
+    } else {
+      userAgent = navigator.userAgent;
+    }
+    if(/mobile/i.test(userAgent)) {
+      return 'mobile';
+    }
+
+    return 'admin';
+  }
 }
 </script>
 
