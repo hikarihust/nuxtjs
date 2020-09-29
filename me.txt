@@ -109,4 +109,6 @@ Custom Loading Pages
     https://loading.io/
 Store của VueX trong NuxtJs 01
     https://vuex.vuejs.org/guide/state.html
+Store của VueX trong NuxtJs 02
+    https://vuex.vuejs.org/guide/modules.html
     
