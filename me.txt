@@ -137,4 +137,113 @@ Install Wordpress
     -> Install 
     Login 
     http://localhost/wp-api-test/wp-admin/
-    
+Wordpress, Database và PHP
+    CMS 1
+        http://localhost/wp-api-test/wp-admin/
+        Settings:
+            Site Language
+            Membership: Anyone can register
+        Apperarance -> Themes 
+        Folder wp-content 
+        Plugins -> Add New
+        Apperarance -> Menus 
+            Main Menu -> create Menu 
+            Custom Links 
+                URL: https://google.com
+                Link Text: Link Google
+                -> Add to Menu 
+        Media: Mục quản lý hình ảnh
+            Hình ảnh upload sẽ được lưu tại Folder wp-content/uploads 
+        Setting -> Media
+            Image sizes: The sizes listed below determine the maximum dimensions in pixels to use when adding an 
+                image to the Media Library.
+    CMS 2
+        User -> Add New 
+        Roles and capabilities wordpress 
+            https://wordpress.org/support/article/roles-and-capabilities/
+            Administrator
+            Editor
+            Author 
+            Contributor 
+            Subscriber 
+    CMS 3
+        Pages -> Add New
+            Sample Page -> Quick Edit 
+            Slug: trang-mau
+            -> Update 
+            -> View 
+        Posts -> Add New
+            Settings -> Document
+                Categories -> Add New Category: Front End
+                Tags: html5
+                Excerpt: Short Description
+            Save Drapt/Publish 
+        Categories
+            Name
+            Slug
+        Tags Nhập name, tự động sinh ra slug 
+            css 
+            Front end
+    Database 1
+        User -> Add New 
+            Username (required): test01
+            Email (required): test01@gmail.com
+            Password: 123456 
+            Confirm use of weak password 
+        wp_options: Bảng này để lưu các dữ liệu riêng lẻ không có cấu trúc rõ ràng 
+        wp_usermeta: Lưu các thông tin thêm của user 
+        Database wordpress diagram 
+        wp_posts: Tất cả những gì người dùng đăng lên thì đều coi là post như: thông tin tấm hình, menu...            
+            Apperarance -> Menus 
+                Main Menu -> create Menu 
+                Custom Links 
+                    URL: https://google.com
+                    Link Text: Link Google
+                    -> Add to Menu 
+    Database 2
+        Posts -> Nhap tieu de(http://localhost/wp-api-test/wp-admin/post.php?post=8&action=edit)
+            Add New Category: Dien Thoai 
+                Add New Category: Xu Huong(Parent Category: Dien Thoai )
+                    Add New Category: Appo ABC1(Parent Category: Xu Huong )
+            -> Update 
+        wp_posts: post=8
+        wp_term_relationships: object_id=8
+            term_taxonomy_id: 3, 4, 8, 9, 10
+        wp_term_taxonomy: term_taxonomy_id = 3, 4, 8, 9, 10
+            term_taxonomy_id = 3
+                term_id: 3
+                taxonomy: category
+                parent: 0
+            term_taxonomy_id = 4
+                term_id: 4
+                taxonomy: post_tag
+                parent: 0
+            term_taxonomy_id = 8
+                term_id: 8
+                taxonomy: category
+                parent: 0
+            term_taxonomy_id = 9
+                term_id: 9
+                taxonomy: category
+                parent: 8
+            term_taxonomy_id = 10
+                term_id: 10
+                taxonomy: category
+                parent: 9
+        wp_terms: 3, 4, 8, 9, 10
+            term_id: 3
+                name: Front End
+                slug: front-end
+            term_id: 4
+                name: html5
+                slug: html5
+            term_id: 8
+                name: Dien Thoai
+                slug: dien-thoai
+            term_id: 9
+                name: Xu Huong
+                slug: xu-huong
+            term_id: 10
+                name: Appo ABC1
+                slug: appo-abc1
+        
