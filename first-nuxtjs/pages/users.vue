@@ -31,7 +31,7 @@
 export default {
   middleware: [ 'check-visit' ],
   layout(context) {
-    console.log("[layout users.vue]", Object.keys(context));
+    // console.log("[layout users.vue]", Object.keys(context));
     return context.isMobile ? 'mobile' : 'admin';
   }
 }

@@ -70,4 +70,19 @@ Routes Middleware và Server Middleware
         Chỉ chạy được ở phía Server mà thôi 
         Middleware chạy được ở cả 2 phía, ở lần truy cập đầu tiên thì chạy ở phía Server còn ở các lần sau 
             sẽ chạy ở phía client 
-        
+Modules trong NuxtJs
+    Modules được chạy trước Server middleware. Modules là các thư viện ở bên ngoài
+Plugins trong NuxtJs
+    https://nuxtjs.org/guides/directory-structure/plugins
+    Là các thư viện mở rộng bên ngoài, nếu ko có nhu cầu mở rộng thêm thì có thể sử dụng trực tiếp các thư 
+        viện bên ngoài thông qua Plugins, còn nếu có nhu cầu mở rộng thêm hoặc tích hợp nhiều Plugins thành 1 
+        Modules thì sử dụng Modules
+    Vue notifications
+    yarn add vue-notification
+    Có 3 cách sử dụng:
+        Injected: Nhúng biến/function toàn cục vào đối tượng View 
+        Sử dụng plugins trong ứng dụng của NuxtJs 
+            Vue.use(Notifications)
+            context: Nhúng vào object context
+            inject: Nhúng vào trong đối tượng View
+    
