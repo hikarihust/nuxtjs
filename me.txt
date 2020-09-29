@@ -51,4 +51,8 @@ Pages, Routing và Layouts
         Nuxt child component
         <NuxtChild />
     Nuxt Link
+    Validate Params
+        Không có trong Vuejs
+        Có thể kiểm soát được route người dùng nhập vào có đúng hay không
+        // '20a' -> NaN -> false -> !false -> true
     
