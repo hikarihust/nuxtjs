@@ -43,4 +43,11 @@ Pages, Routing và Layouts
             phần tử khác liên quan 
             components: true, tự động load hết các components có trong thư mục components 
     Dynamic Routes
+    Nested Routes
+        Có sự kế thừa về giao diện
+        Parent 
+        --------- <---
+        NuxtChild
+        Nuxt child component
+        <NuxtChild />
     
