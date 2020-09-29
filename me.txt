@@ -111,4 +111,30 @@ Store của VueX trong NuxtJs 01
     https://vuex.vuejs.org/guide/state.html
 Store của VueX trong NuxtJs 02
     https://vuex.vuejs.org/guide/modules.html
+
+==================================================================================================================
+
+                                            WP Rest API
+
+Cài đặt môi trường lập trình XAMPP
+    Download wordpress
+    https://wordpress.org/download/
+Install Wordpress
+    https://wordpress.org/download/
+    wordpress -> htdocs/
+    Rename wordpress -> wp-api-test
+    wp-config-sample.php -> wp-config.php
+    Mysql: wp-api-test
+    https://api.wordpress.org/secret-key/1.1/salt/
+    http://localhost/wp-api-test/
+    English(US)
+    Site Title: WP API Testing 
+    Username: vudinhquang
+    Password: 123456
+    Confirm use of weak password
+    Your Email: test@gmail.com
+    Search engine visibility
+    -> Install 
+    Login 
+    http://localhost/wp-api-test/wp-admin/
     
