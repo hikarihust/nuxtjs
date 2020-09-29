@@ -19,7 +19,34 @@
 
 <script>
 export default {
-  transition: 'slide-left'
+  transition: 'slide-left',
+  data() {
+    return {
+      title: 'Tiêu đề bài viết',
+      description: 'Hàng Ngàn Sản Phẩm Chính Hãng - Giao Và Nhận Hàng Nhanh Trong Ngày Cùng Dịch Vụ Tikinow! Tải App Tiki Ngay Để Nhận Thêm Nhiều Ưu Đãi Hấp Dẫn Mỗi Ngày! Hài Lòng Khách Hàng. Giảm Giá Cực Tốt. Uy Tín, Chất Lượng. Cam Kết Chính Hãng 100%.'
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          name: 'description',
+          content: this.description
+        },
+        {
+          property: 'og:title',
+          content: 'Content'
+        }
+      ],
+      script: [
+        {
+          body: true,
+          src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'
+        }
+      ],
+    }
+  }
 }
 </script>
 

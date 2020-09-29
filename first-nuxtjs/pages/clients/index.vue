@@ -4,6 +4,9 @@
 
 <script>
 export default {
+  head: {
+    title: 'Clients Page'
+  },
   mounted () {
     setTimeout(() => {
       this.$notify({

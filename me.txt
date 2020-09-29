@@ -96,4 +96,10 @@ Scrolls và Transition
             Chạy từ bên trái qua
         transform: translate(30px, 0)
             Chạy từ phải qua 
+Meta Tags và SEO 
+    Globally using the nuxt.config.js
+    Locally using the head as an object
+    Locally using the head as a function so that you have access to data and computed properties.
+    Open graph 
+    You can also pass each resource an optional body: true to include the resource before the closing </body> tag.
     
