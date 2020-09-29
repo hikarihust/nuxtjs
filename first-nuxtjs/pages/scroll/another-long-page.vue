@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  // scrollToTop: true,
+  transition: 'slide-left'
 }
 </script>
 

@@ -87,4 +87,13 @@ Plugins trong NuxtJs
             inject: Nhúng vào trong đối tượng View
 Scrolls và Transition
     Scrolls
+    Transition
+        https://vuejs.org/v2/guide/transitions.html
+        Break on -> attribute modifications
+        Break on -> subtree modifications
+        debug: F12 -> sources
+        transform: translate(-30px, 0)
+            Chạy từ bên trái qua
+        transform: translate(30px, 0)
+            Chạy từ phải qua 
     
