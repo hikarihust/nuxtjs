@@ -107,4 +107,6 @@ Custom Loading Pages
         Quy định độ trễ khi hiển thị thanh progress bar
     Using a Custom Loading Component
     https://loading.io/
+Store của VueX trong NuxtJs 01
+    https://vuex.vuejs.org/guide/state.html
     

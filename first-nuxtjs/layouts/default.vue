@@ -1,6 +1,7 @@
 <template>
   <div class="root">
-    <header><h1>Header</h1></header>
+    <header><h1>Header {{ localCounter }}</h1></header>
+    <button v-on:click="handleClick">Click Me</button>
     <ul>
       <li><nuxt-link to="/scroll/long-page">Long Page</nuxt-link></li>
       <li><nuxt-link to="/scroll/another-long-page">Another Long Page</nuxt-link></li>
@@ -16,6 +17,23 @@
 import { mapState, mapActions } from 'vuex';
 export default {
   scrollToTop: true,
+  computed: {
+    ...mapState({
+      // localCounter: function(state) {
+      //   return state.counter
+      // }
+      localCounter: state => state.counter
+    })
+  },
+
+  methods: {
+    ...mapActions([
+      'increment'
+    ]),
+    handleClick() {
+      this.increment();
+    }
+  },
 }
 </script>
 
