@@ -59,4 +59,5 @@ Pages, Routing và Layouts
 Dynamic Layouts
     Dynamic Layouts
         req: Được truyền từ client lên Server nên chỉ tồn tại phía Server không tồn tại phía client 
+    Error Page
     
