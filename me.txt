@@ -274,7 +274,8 @@ Data Fetching trong Pages
             ],
         $ Shortcuts
         Fetch Style: $axios.$get()
-    AsyncData 1
+    AsyncData 1 
+        AsyncData dùng cho page chứ ko dùng cho component
         https://nuxtjs.org/guide/async-data
         Returning a Promise. 
         Nuxt.js will wait for the promise to be resolved before rendering the component.
@@ -282,4 +283,18 @@ Data Fetching trong Pages
         let you handle async operations before initializing the component
     AsyncData 2
         Using async/await
-    
+    Handle Error 1
+        req khác null/process.server tồn tại -> gọi ở môi trường server nuxtjs 
+        req bằng null -> gọi ở môi trường client phía trình duyệt
+        catch (e) {
+            throw new Error({
+                error: 'Bi loi'
+            })
+        }
+            throw sẽ thực hiện ném ra 1 lỗi mới cho nuxtjs thực hiện bắt error và đẩy sang layout khác
+            Mỗi trường dev -> lỗi được hiển thị, mà hình đỏ hiển thị lên
+            Môi trường production: 
+                yarn build 
+                yarn start 
+                -> Đẩy say layout error 
+        

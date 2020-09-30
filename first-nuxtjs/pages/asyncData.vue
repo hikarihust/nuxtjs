@@ -40,8 +40,9 @@ export default {
   }
   */
   async asyncData({ $axios }) {
+    try {
       const promiseCategories = $axios.get("http://localhost/wp-api-test/wp-json/wp/v2/categories") // 2
-      const promisePosts = $axios.get("http://localhost/wp-api-test/wp-json/wp/v2/posts") // 3
+      const promisePosts = $axios.get("http://localhost/wp-api-test/wp-json/wp/v2/pos") // 3
 
       const [resPosts, resCategories] = await Promise.all([
         promisePosts,
@@ -52,6 +53,12 @@ export default {
         listPosts: resPosts.data,
         listCategories: resCategories.data
       }
+    } catch (e) {
+      console.log("error", e.message);
+      throw new Error({
+        error: 'Bi loi'
+      })
+    }
   }
 }
 </script>
