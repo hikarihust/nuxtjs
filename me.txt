@@ -274,4 +274,7 @@ Data Fetching trong Pages
             ],
         $ Shortcuts
         Fetch Style: $axios.$get()
+    AsyncData 1
+        You may want to fetch data and render it on the server-side. Nuxt.js adds an asyncData method to 
+        let you handle async operations before initializing the component
     
