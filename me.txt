@@ -331,4 +331,24 @@ Data Fetching trong Store
             'state',
             'rootGetters',
             'rootState'
-    
+So sánh các dạng Data Fetching
+    asyncData:
+        Chỉ được khai báo trong Page 
+        Chạy lần đầu tiên ở Server(khi truy cập trực tiếp vào page đó)
+        Khi Navigating chạy ở client
+        Chạy trước khi sinh ra Component
+        Tự động merge với data nếu có return 
+    fetch
+        Khai báo được cả trong Page và trong Component 
+        Chạy lần đầu tiên ở phía Server
+        Khi Navigating chạy ở client
+        Chạy sau khi sinh ra component 
+        Không merge data với vuejs 
+    nuxtServerInit 
+        Chỉ được khai báo ở trong store root 
+        Chạy 1 lần duy nhất ở phía server 
+        Không chạy ở phía client 
+        Chạy trước khi sinh ra Component
+        Chạy trước cả hàm asyncData và fetch
+        Nuxt Lifecycle
+        
