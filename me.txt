@@ -309,3 +309,10 @@ Data Fetching trong Pages
             server_error_details
         Điều hướng người dùng sang trang error layout(layout/error.vue)
         
+Data Fetching trong Components
+    FetchMethod 1
+        Khác với AsyncData, fetch Method có thể gọi được cả trong page và component
+        Thứ tự chạy AsyncData -> created -> fetch do đó có thể sử dụng được this 
+        fetch không nhận context làm tham số 
+        Không merge với data vào object vue 
+    
