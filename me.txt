@@ -316,4 +316,6 @@ Data Fetching trong Components
         fetch không nhận context làm tham số 
         Không merge với data vào object vue 
     FetchMethod 2
+Data Fetching trong Store
+    Fetch Store
     

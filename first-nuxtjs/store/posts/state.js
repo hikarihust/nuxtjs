@@ -1,3 +1,4 @@
 export default () => ({
-  list: ['Item 1']
+  list: ['Item 1'],
+  postsList: [],
 })
