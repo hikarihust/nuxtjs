@@ -246,4 +246,13 @@ Wordpress, Database và PHP
             term_id: 10
                 name: Appo ABC1
                 slug: appo-abc1
-        
+Routes và Endpoints trong WP Rest API
+    rest api handbook wordpress 
+    https://developer.wordpress.org/rest-api/key-concepts/
+    http://localhost/wp-api-test/?rest_route=/   ==== http://localhost/wp-api-test/wp-json/ 
+    http://localhost/wp-api-test/?rest_route=/wp/v2  ==== http://localhost/wp-api-test/wp-json/wp/v2
+    GET:
+        http://localhost/wp-api-test/?rest_route=/wp/v2/categories === http://localhost/wp-api-test/wp-json/wp/v2/categories
+        http://localhost/wp-api-test/wp-json/wp/v2/categories?per_page=2
+        http://localhost/wp-api-test/wp-json/wp/v2/posts
+    
