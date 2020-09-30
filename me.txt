@@ -264,4 +264,14 @@ Get data by CSR fetch
     fetch("http://localhost/wp-api-test/wp-json/wp/v2/categories")
         .then(res => res.json())
         .then(data => console.log(data))
+Data Fetching trong Pages
+    Axios Modules
+        https://axios.nuxtjs.org/setup
+        yarn add @nuxtjs/axios
+        nuxt.config.js
+            modules: [
+                '@nuxtjs/axios',
+            ],
+        $ Shortcuts
+        Fetch Style: $axios.$get()
     

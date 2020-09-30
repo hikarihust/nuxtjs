@@ -19,6 +19,13 @@ export default {
     }
   },
   created () {
+    // console.log("this.$axios", this.$axios)
+    this.$axios.$get('http://localhost/wp-api-test/wp-json/wp/v2/categories')
+      .then(data => {
+        console.log("res = ", data);
+      })
+
+    /*
     fetch('http://localhost/wp-api-test/wp-json/wp/v2/categories')
       .then(res => {
         return res.json()
@@ -26,6 +33,7 @@ export default {
       .then(data => {
         this.listCategories = data
       })
+    */
   }
 }
 </script>
