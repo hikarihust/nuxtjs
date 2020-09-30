@@ -39,7 +39,7 @@ export default {
     // })
   }
   */
-  async asyncData({ $axios }) {
+  async asyncData({ $axios, error }) {
     try {
       const promiseCategories = $axios.get("http://localhost/wp-api-test/wp-json/wp/v2/categories") // 2
       const promisePosts = $axios.get("http://localhost/wp-api-test/wp-json/wp/v2/pos") // 3
@@ -55,9 +55,12 @@ export default {
       }
     } catch (e) {
       console.log("error", e.message);
+      error({ statusCode: 405, message: 'Post not found', counter: 10 })
+      /*
       throw new Error({
         error: 'Bi loi'
       })
+      */
     }
   }
 }

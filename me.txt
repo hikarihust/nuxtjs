@@ -297,4 +297,15 @@ Data Fetching trong Pages
                 yarn build 
                 yarn start 
                 -> Đẩy say layout error 
+    Handle Error 2
+        Custom trang error(môi trường production)
+            .nuxt/views/error.html
+            node_modules\@nuxt\config\dist\config.js
+            -> nuxt.config.js -> config nội dung messages thì sau khi build nội dung của .nuxt/views/error.html 
+                sẽ được cập nhật
+                Cũng có thể sửa trực tiếp .nuxt/views/error.html 
+            nuxtjs
+            server_error
+            server_error_details
+        Điều hướng người dùng sang trang error layout(layout/error.vue)
         

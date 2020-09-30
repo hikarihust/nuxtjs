@@ -50,5 +50,17 @@ export default {
   },
   router: {
     middleware: [ 'mobile', 'check-visit' ]
+  },
+  messages: {
+    loading: 'Loading...',
+    error_404: 'This page could not be found',
+    server_error: 'Có lỗi xảy ra!!!',
+    nuxtjs: '',
+    back_to_home: 'Back to the home page',
+    server_error_details:
+      'Có lổi xảy ra trong quá trình duyệt Web. Vui lòng refresh lại trang hoặc liên hệ với Admin',
+    client_error: 'Error',
+    client_error_details:
+      'An error occurred while rendering the page. Check developer tools console for details.'
   }
 }
