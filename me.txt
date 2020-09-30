@@ -256,3 +256,12 @@ Routes và Endpoints trong WP Rest API
         http://localhost/wp-api-test/wp-json/wp/v2/categories?per_page=2
         http://localhost/wp-api-test/wp-json/wp/v2/posts
     
+==================================================================================================================
+
+                                            Data Fetching phía Server
+
+Get data by CSR fetch
+    fetch("http://localhost/wp-api-test/wp-json/wp/v2/categories")
+        .then(res => res.json())
+        .then(data => console.log(data))
+    
