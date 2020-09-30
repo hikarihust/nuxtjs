@@ -318,4 +318,17 @@ Data Fetching trong Components
     FetchMethod 2
 Data Fetching trong Store
     Fetch Store
+    Nuxt Server Init
+        nuxtServerInit 
+        ! Only the primary module (in store/index.js) will receive this action
+        the action nuxtServerInit is defined in the store and the mode is universal
+        Nuxt.js will call it with the context (only from the server-side).
+        The context is given to nuxtServerInit as the 2nd argument in the asyncData method.
+        1st argument -> vuexContext
+            'dispatch',
+            'commit',
+            'getters',
+            'state',
+            'rootGetters',
+            'rootState'
     
