@@ -315,4 +315,5 @@ Data Fetching trong Components
         Thứ tự chạy AsyncData -> created -> fetch do đó có thể sử dụng được this 
         fetch không nhận context làm tham số 
         Không merge với data vào object vue 
+    FetchMethod 2
     
