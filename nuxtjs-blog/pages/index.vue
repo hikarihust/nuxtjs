@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper-content">
     <NewsLatest />
+    <NewsPopular />
   </div>
 </template>
 

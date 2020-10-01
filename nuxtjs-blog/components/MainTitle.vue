@@ -1,6 +1,10 @@
 <template>
-  <div class="main-title spacing">
+  <div class="main-title spacing" v-bind:class="classNames">
     <h2>{{ title }}</h2>
+    <AppButton
+      v-if="isViewMore"
+      v-bind:href="viewMoreLink"
+    >{{ viewMoreText }}</AppButton>
   </div>
 </template>
 
@@ -11,6 +15,27 @@ export default {
       type: String,
       default: ''
     },
+    isViewMore: {
+      type: Boolean,
+      default: false
+    },
+    viewMoreLink: {
+      type: String,
+      default: '',
+    },
+    viewMoreText: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    classNames() {
+      return {
+        'd-flex': this.isViewMore,
+        'tcl-jc-between': this.isViewMore,
+        'tcl-ais-center': this.isViewMore,
+      }
+    }
   },
 }
 </script>
