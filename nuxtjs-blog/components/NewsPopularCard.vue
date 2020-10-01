@@ -1,6 +1,8 @@
 <template>
   <div class="popular-news__list--card">
     <ArticleItem
+      isShowDesc
+      isShowCategories
       :isStyleRow="isStyleRow"
       :isStyleCard="isStyleCard"
     />

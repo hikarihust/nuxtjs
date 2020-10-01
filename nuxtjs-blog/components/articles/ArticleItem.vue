@@ -2,11 +2,11 @@
   <article class="article-item" :class="classNames">
     <ArticleItemThumbnail />
     <div class="article-item__content">
-      <ArticleItemCategories v-if="isStyleCard" />
-      <ArticleItemStats v-if="isStyleCard" />
+      <ArticleItemCategories v-if="isShowCategories" />
+      <ArticleItemStats v-if="isShowCategories" />
       <ArticleItemTitle />
-      <ArticleItemDesc v-if="isStyleCard" />
-      <ArticleItemInfor />
+      <ArticleItemDesc v-if="isShowDesc" />
+      <ArticleItemInfor :isShowAvatar="isShowAvatar" />
     </div>
   </article>
 </template>
@@ -22,6 +22,18 @@ export default {
       type: Boolean,
       default: false
     },
+    isShowDesc: {
+      type: Boolean,
+      default: false
+    },
+    isShowCategories: {
+      type: Boolean,
+      default: false
+    },
+    isShowAvatar: {
+      type: Boolean,
+      default: true,
+    }
   },
   computed: {
     classNames() {

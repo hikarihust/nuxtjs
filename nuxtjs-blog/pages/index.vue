@@ -2,6 +2,7 @@
   <div class="wrapper-content">
     <NewsLatest />
     <NewsPopular />
+    <ArticlesList />
   </div>
 </template>
 
