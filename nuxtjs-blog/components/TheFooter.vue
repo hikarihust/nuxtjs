@@ -39,15 +39,11 @@
                           <p>Fanpage</p>
                       </div>
                       <div class="footer-facebook">
-                          <div class="fb-page" data-href="https://www.google.com/" data-tabs=""
-                              data-width="" data-height="" data-small-header="false" data-adapt-container-width="true"
-                              data-hide-cover="false" data-show-facepile="true">
-                              <blockquote cite="https://www.google.com/"
-                                  class="fb-xfbml-parse-ignore">
-                                  <a href="https://www.google.com/">Học Lập Trình Web Thông Qua
-                                  Projects Thực Tế</a>
-                              </blockquote>
-                          </div>
+                        <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs=""
+                          data-width="" data-height="" data-small-header="false" data-adapt-container-width="true"
+                          data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook"
+                          class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
+                        </div>
                       </div>
                   </div>
               </div>

@@ -13,6 +13,15 @@ export default {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap' },
       { rel: 'stylesheet', href: 'http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' },
       { rel: 'stylesheet', href: '/assets/libs/bootstrap4/bootstrap-tcl.css' }
+    ],
+    script: [
+      {
+        async: true,
+        defer: true,
+        crossorigin: 'anonymous',
+        src: 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=682829465411569&autoLogAppEvents=1',
+        nonce: 'njMQVAzi'
+      }
     ]
   },
 
