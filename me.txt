@@ -454,4 +454,40 @@ Cấu hình Apache + Proxy + Hosts
             Import 
         Truy cập: 
             http://learning-nuxtjs.xyz/wp-api/wp-admin
+    Config Proxy và PORT - Window
+        https://rada.neocities.org/xampp-windows-proxy-server.html
+        1. Truy cập C:\xampp\apache\conf\httpd.conf
+        2. Cấu hình lại PORT XAMPP
+            Thêm vào: Listen 9999
+        3. Kiểm tra xem các Modules trong Apache đã được kích hoạt hay chưa? Các Modules này hỗ trợ cấu hình được Proxy 
+            và điều hướng ngầm người dùng ở trong Server 
+            LoadModule rewrite_module modules/mod_rewrite.so
+            LoadModule proxy_module modules/mod_proxy.so
+            LoadModule proxy_http_module modules/mod_proxy_http.so
+        4. Copy và Paste đoạn code bên dưới vào file config (C:\xampp\apache\conf\httpd.conf)
+            <IfModule mod_proxy.c>
+                <VirtualHost *:80>
+                    ProxyPass /wp-api/ http://127.0.0.1:9999/wp-api/
+                    ProxyPassReverse /wp-api/ http://127.0.0.1:9999/wp-api/
+
+                    ProxyPass / http://127.0.0.1:3000/
+                    ProxyPassReverse / http://127.0.0.1:3000/
+
+                    ProxyRequests On
+                    ProxyPreserveHost On
+                </VirtualHost>
+
+                <VirtualHost *:9999>
+                    DocumentRoot "C:/xampp/htdocs"
+                    ServerName learning-nuxtjs.xyz
+                </VirtualHost>
+            </IfModule>
+        http://learning-nuxtjs.xyz/wp-api -> Trỏ sang http://127.0.0.1:9999/wp-api/
+        http://learning-nuxtjs.xyz/ -> Trỏ sang http://127.0.0.1:3000/
+        yarn dev 
+            localhost vẫn có PORT là 3000
+        -> Truy cập vào Browser để kiểm tra: 
+            http://learning-nuxtjs.xyz/
+            http://learning-nuxtjs.xyz/wp-api/
+            http://learning-nuxtjs.xyz/wp-api/wp-admin/
     
