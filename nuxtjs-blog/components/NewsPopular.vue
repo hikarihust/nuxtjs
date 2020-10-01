@@ -3,20 +3,20 @@
     <div class="tcl-container">
       <MainTitle
         title="Bài viết phổ biến"
-        :isViewMore="true"
+        isViewMore
         viewMoreLink="/login"
         viewMoreText="Xem thêm"
       />
       <div class="popular-news__list spacing">
         <div class="popular-news__list--left">
           <div class="popular-news__list--row">
-            <NewsPopularCard />
-            <NewsPopularCard />
+            <NewsPopularCard isStyleCard />
+            <NewsPopularCard isStyleCard />
           </div>
         </div>
         <div class="popular-news__list--right">
           <div class="popular-news__list--row">
-            <NewsPopularCard />
+            <NewsPopularCard isStyleCard isStyleRow />
           </div>
         </div>
       </div>
@@ -31,5 +31,5 @@ export default {
 </script>
 
 <style>
-
+  @import url('~/assets/css/popular-news-list.css');
 </style>
