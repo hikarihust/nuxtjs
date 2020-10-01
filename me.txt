@@ -413,4 +413,29 @@ Cấu hình Apache + Proxy + Hosts
         Media 
             Copy file in uploads Folder to wp-api/wp-content/uploads 
         Posts: có sẵn 1 số bài viết 
+    Proxy Concepts
+        rest api handbook wordpress
+            https://developer.wordpress.org/rest-api/key-concepts/
+        http://localhost/wp-api/?rest_route=/
+        http://localhost/wp-api/wp-admin/
+            Settings -> Permalink Settings
+                Plain -> Save Changes 
+                Day and name -> Save Changes 
+        http://localhost/wp-api/wp-json
+        Hiện tại:
+            FE(Nuxt): http://localhost:3000/
+            BE: http://localhost/wp-api/wp-json
+            ====================================
+            Server thực tế learning-nuxtjs.com
+            FE: http://learning-nuxtjs.com:3000/
+            BE: http://learning-nuxtjs.com/wp-api/wp-json
+        Mong muốn là sau khi config xong 
+            FE: http://learning-nuxtjs.com
+            BE: http://localhost/wp/wp-api/wp-admin
+                http://localhost/wp/wp-api/wp-json
+        Apache(Proxy) để điều hướng truy cập của người dùng 
+            http://learning-nuxtjs.com(PORT mặc định 80) khi người dùng truy cập vào PORT 80 -> cho chạy qua Proxy để 
+                điều hướng người dùng nhảy sang PORT là 3000
+            http://localhost/wp/wp-api/wp-admin Hiện tại PORT của wordpress là 80 -> lưu sang PORT khác để dùng Proxy
+                để điều hướng người dùng sang PORT của backend 
     
