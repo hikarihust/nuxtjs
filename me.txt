@@ -404,3 +404,13 @@ Cấu hình Apache + Proxy + Hosts
             Mysql: wp-api
             Import data: wp_api.sql
         http://localhost/wp-api/
+    Fix Home Url
+        wp_api.sql: http://learning-nuxtjs.xyz -> http://localhost
+        Import data: wp_api.sql
+        http://localhost/wp-api/wp-admin
+            user: congluc1902
+            pwd: 123456
+        Media 
+            Copy file in uploads Folder to wp-api/wp-content/uploads 
+        Posts: có sẵn 1 số bài viết 
+    
