@@ -351,4 +351,56 @@ So sánh các dạng Data Fetching
         Chạy trước khi sinh ra Component
         Chạy trước cả hàm asyncData và fetch
         Nuxt Lifecycle
-        
+
+==================================================================================================================
+
+                                            Cấu hình Project NuxtJs + LAMP Stack
+
+Cấu hình Apache + Proxy + Hosts
+    Install Project
+        1. Cài đặt Nuxt
+            yarn create nuxt-app nuxtjs-blog 
+            Project name: (nuxtjs-blog)
+            ? Programming language: JavaScript 
+            ? Package manager: Yarn
+            ? UI framework: None
+            ? Nuxt.js modules: (Press <space> to select, <a> to toggle all, <i> to invert selection)
+                Axios
+            ? Linting tools: (Press <space> to select, <a> to toggle all, <i> to invert selection)
+                ESLint
+            ? Testing framework: None
+            ? Rendering mode: Universal (SSR / SSG)
+            ? Deployment target: Server (Node.js hosting)
+            ? Development tools: (Press <space> to select, <a> to toggle all, <i> to invert selection)
+                jsconfig.json
+            ? Version control system: None
+            cd nuxtjs-blog
+            yarn dev
+            To get started:
+                cd first-nuxtjs
+                yarn dev
+            To build & start for production:
+                cd first-nuxtjs
+                yarn build
+                yarn start
+            http://localhost:3000/
+            Extension 
+                Vetur 
+                Vue VSCode Snippets 
+        2. Cài đặt Wordpress 
+            https://wordpress.org/download/
+            wordpress -> htdocs/
+            Rename wordpress -> wp-api
+            wp-config-sample.php -> wp-config.php
+            https://api.wordpress.org/secret-key/1.1/salt/
+                define( 'AUTH_KEY',         'put your unique phrase here' );
+                define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
+                define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
+                define( 'NONCE_KEY',        'put your unique phrase here' );
+                define( 'AUTH_SALT',        'put your unique phrase here' );
+                define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
+                define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
+                define( 'NONCE_SALT',       'put your unique phrase here' );
+            Mysql: wp-api
+            Import data: wp_api.sql
+        http://localhost/wp-api/
