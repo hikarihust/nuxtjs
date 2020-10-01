@@ -438,4 +438,20 @@ Cấu hình Apache + Proxy + Hosts
                 điều hướng người dùng nhảy sang PORT là 3000
             http://localhost/wp/wp-api/wp-admin Hiện tại PORT của wordpress là 80 -> lưu sang PORT khác để dùng Proxy
                 để điều hướng người dùng sang PORT của backend 
+    Config Hosts - Window
+        1. Cấu hình domain 
+            C:\Windows\System32\drivers\etc\hosts 
+                127.0.0.1       learning-nuxtjs.xyz
+        yarn dev
+        Truy cập: 
+            learning-nuxtjs.xyz:3000
+            http://learning-nuxtjs.xyz/wp-api/wp-json
+            http://learning-nuxtjs.xyz/wp-api/
+        http://learning-nuxtjs.xyz/phpmyadmin/
+            Xóa hết bảng 
+        wp_api.sql:
+            http://localhost -> http://learning-nuxtjs.xyz
+            Import 
+        Truy cập: 
+            http://learning-nuxtjs.xyz/wp-api/wp-admin
     
