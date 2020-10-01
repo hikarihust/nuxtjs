@@ -490,4 +490,6 @@ Cấu hình Apache + Proxy + Hosts
             http://learning-nuxtjs.xyz/
             http://learning-nuxtjs.xyz/wp-api/
             http://learning-nuxtjs.xyz/wp-api/wp-admin/
+Xây dựng Components cần thiết
+    Mã nguồn html 
     
