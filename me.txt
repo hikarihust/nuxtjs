@@ -554,4 +554,5 @@ Chức năng Latest Articles (FE + BE)
                 Extending Axios: If you need to customize axios by registering interceptors and changing global config, 
                     you have to create a nuxt plugin.
                     -> axios plugins
+    Init Store
     
