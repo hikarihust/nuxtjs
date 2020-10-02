@@ -7,6 +7,14 @@
         'get_callback'  => 'get_rest_featured_media_url' // Ten ham
       )
     );
+
+    register_rest_field('post',
+      'author_data',
+      array(
+        'get_callback'  => 'get_rest_author_post_data'
+      )
+    );
+
   });
 
   function get_rest_featured_media_url($post, $field_name, $request) {
@@ -20,6 +28,20 @@
     }
 
     return '';
+  }
+
+  function get_rest_author_post_data($post, $field_name, $request) {
+    $author_id = $post['author'];
+
+    if ($author_id) {
+      return array(
+        'nickname' => get_the_author_meta( 'nickname', $author_id )
+      );
+    }
+    
+    return array(
+      'nickname' => ''
+    );
   }
 
 ?>
