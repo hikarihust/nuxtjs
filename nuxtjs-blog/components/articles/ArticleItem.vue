@@ -10,7 +10,10 @@
         v-if="isShowCategories"
         :categories="post.categories"
       />
-      <ArticleItemStats v-if="isShowCategories" />
+      <ArticleItemStats
+        v-if="isShowCategories"
+        :viewCount="post.view_count"
+      />
       <ArticleItemTitle
         :slug="getSlug"
         :title="post.title.rendered"

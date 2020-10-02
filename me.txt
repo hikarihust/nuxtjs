@@ -625,4 +625,5 @@ Chức năng Popular List (FE + BE)
             -> view_count tăng lên 1 giá trị 
         Sau khi check xong thì save về giá trị cũ 
             Counter Mode: REST API 
-        
+    Render view count
+    
