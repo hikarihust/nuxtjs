@@ -560,4 +560,8 @@ Chức năng Latest Articles (FE + BE)
             http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2/
     Props Latest Posts
     Article Title
+    DayJs lib
+        https://day.js.org/docs/en/installation/node-js
+        yarn add dayjs 
+        Changing locales locally
     
