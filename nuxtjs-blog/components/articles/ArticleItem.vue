@@ -1,5 +1,5 @@
 <template>
-  <article class="article-item" :class="classNames">
+  <article v-if="post" class="article-item" :class="classNames">
     <ArticleItemThumbnail />
     <div class="article-item__content">
       <ArticleItemCategories v-if="isShowCategories" />
@@ -33,6 +33,10 @@ export default {
     isShowAvatar: {
       type: Boolean,
       default: true,
+    },
+    post: {
+      type: Object,
+      default: null
     }
   },
   computed: {

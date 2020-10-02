@@ -1,7 +1,7 @@
 export default {
   async actFetchLatestPost({ commit }) {
     try {
-      const response = await this.$api.get('/postss', {
+      const response = await this.$api.get('/posts', {
         params: {
           page: 1,
           per_page: 3

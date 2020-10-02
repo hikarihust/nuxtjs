@@ -558,4 +558,5 @@ Chức năng Latest Articles (FE + BE)
     API Latest Posts
         Endpoints
             http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2/
+    Props Latest Posts
     
