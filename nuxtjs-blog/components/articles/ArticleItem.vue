@@ -6,7 +6,10 @@
       :thumbnail="post.featured_media_url"
     />
     <div class="article-item__content">
-      <ArticleItemCategories v-if="isShowCategories" />
+      <ArticleItemCategories
+        v-if="isShowCategories"
+        :categories="post.categories"
+      />
       <ArticleItemStats v-if="isShowCategories" />
       <ArticleItemTitle
         :slug="getSlug"

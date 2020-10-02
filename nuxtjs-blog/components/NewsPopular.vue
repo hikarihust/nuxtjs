@@ -28,8 +28,13 @@
 import { mapState, mapGetters } from 'vuex';
 export default {
   computed: {
+    /*
     ...mapState({
       posts: state => state.posts.popularList
+    }),
+    */
+    ...mapGetters({
+      posts: 'posts/getPopularList'
     })
   },
 }

@@ -607,4 +607,5 @@ Chức năng Popular List (FE + BE)
                 await dispatch('posts/actFetchCategories');
             }
         }
+    Render categories
     
