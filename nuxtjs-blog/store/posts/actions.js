@@ -40,4 +40,21 @@ export default {
       console.error("actFetchPopularPost", e.response.data.message);
     }
   },
+
+  async actFetchCategories({ commit }) {
+    try {
+      const response = await this.$api.get('/categories', {
+        params: {
+          page: 1,
+          per_page: 100,
+        }
+      });
+
+      if (response.status === 200) {
+        commit('setCategoriesList', response.data);
+      }
+    } catch(e) {
+      console.error("actFetchCategories", e.response.data.message);
+    }
+  }
 }

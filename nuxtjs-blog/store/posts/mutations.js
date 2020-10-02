@@ -6,4 +6,13 @@ export default {
   setPopularList(state, data) {
     state.popularList = data;
   },
+
+  setCategoriesList(state, categories) {
+    let hashCategories = {};
+    categories.forEach((category) => {
+      const categoryId = category.id;
+      hashCategories[categoryId] = category;
+    })
+    state.hashCategories = hashCategories;
+  }
 }

@@ -599,4 +599,12 @@ Chức năng Popular List (FE + BE)
     Handle error w3c
         Một thẻ <p> chỉ được chứa nội dung thôi chứ không được chứa thẻ <p> khác  
         w3c Validate
+    Hash categories
+        Categories có thể được dùng ở nhiều nơi chứ không chỉ ở trong trang home nên sẽ ko 
+            dispatch ở trong trang home mà sẽ dispatch chung cho store
+        export const actions = {
+            async nuxtServerInit({ dispatch }) {
+                await dispatch('posts/actFetchCategories');
+            }
+        }
     
