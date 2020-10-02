@@ -4,9 +4,15 @@
     <div class="article-item__content">
       <ArticleItemCategories v-if="isShowCategories" />
       <ArticleItemStats v-if="isShowCategories" />
-      <ArticleItemTitle />
+      <ArticleItemTitle
+        :slug="getSlug"
+        :title="post.title.rendered"
+      />
       <ArticleItemDesc v-if="isShowDesc" />
-      <ArticleItemInfor :isShowAvatar="isShowAvatar" />
+      <ArticleItemInfor
+        :isShowAvatar="isShowAvatar"
+        :created="post.date"
+      />
     </div>
   </article>
 </template>
@@ -45,6 +51,9 @@ export default {
         'style-card': this.isStyleCard,
         'style-row': this.isStyleRow,
       }
+    },
+    getSlug() {
+      return '/post/' + this.post.slug
     }
   },
 }

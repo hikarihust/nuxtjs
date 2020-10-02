@@ -32,6 +32,10 @@ export default {
       type: Boolean,
       default: true
     },
+    created: {
+      type: String,
+      default: new Date()
+    },
   },
 }
 </script>

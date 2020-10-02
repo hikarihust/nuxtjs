@@ -1,14 +1,21 @@
 <template>
   <h2 class="article-item__title">
-    <a href="/only-someone-who's-seen-the-mummy-will-pass-this/">Only Someone Who's Seen The Mummy Will
-      Pass This
-    </a>
+    <nuxt-link v-bind:to="slug">{{ title }}</nuxt-link>
   </h2>
 </template>
 
 <script>
 export default {
-
+  props: {
+    slug: {
+      type: String,
+      default: ''
+    },
+    title: {
+      type: String,
+      default: ''
+    }
+  },
 }
 </script>
 
