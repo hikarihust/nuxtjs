@@ -566,6 +566,7 @@ Chức năng Latest Articles (FE + BE)
         Changing locales locally
     WP custom
     WP custom thumb 1
+        Hiển thị hình ảnh của bài viết
         https://developer.wordpress.org/rest-api/extending-the-rest-api/modifying-responses/
         register_rest_field()
             https://developer.wordpress.org/reference/functions/register_rest_field/
@@ -576,4 +577,5 @@ Chức năng Latest Articles (FE + BE)
             $size: post-thumbnail, thumbnail, medium, large
         SELECT * FROM wp_api.wp_options;
             thumbnail_size_w, thumbnail_size_h, medium_size_w, medium_size_h, large_size_w, large_size_h
-      
+    WP custom thumb 2
+    
