@@ -25,5 +25,7 @@ export default {
 </script>
 
 <style>
-
+  .article-item__desc p {
+    margin-bottom: 0;
+  }
 </style>

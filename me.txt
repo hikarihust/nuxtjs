@@ -596,4 +596,7 @@ Chức năng Latest Articles (FE + BE)
     Render Latest Posts
 Chức năng Popular List (FE + BE)
     API Popular Posts
+    Handle error w3c
+        Một thẻ <p> chỉ được chứa nội dung thôi chứ không được chứa thẻ <p> khác  
+        w3c Validate
     
