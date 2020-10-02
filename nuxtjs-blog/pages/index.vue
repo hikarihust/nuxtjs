@@ -9,7 +9,10 @@
 <script>
 export default {
   async asyncData({ store }) {
-    await store.dispatch('posts/actFetchLatestPost');
+    await Promise.all([
+      store.dispatch('posts/actFetchLatestPost'),
+      store.dispatch('posts/actFetchPopularPost')
+    ])
   }
 }
 </script>

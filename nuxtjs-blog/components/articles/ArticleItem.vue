@@ -12,7 +12,7 @@
         :slug="getSlug"
         :title="post.title.rendered"
       />
-      <ArticleItemDesc v-if="isShowDesc" />
+      <ArticleItemDesc :desc="post.excerpt.rendered" v-if="isShowDesc" />
       <ArticleItemInfor
         :isShowAvatar="isShowAvatar"
         :created="post.date"

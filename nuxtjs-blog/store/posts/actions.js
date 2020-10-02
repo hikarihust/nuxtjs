@@ -22,5 +22,22 @@ export default {
         error: e.response.data.message
       }
     }
-  }
+  },
+
+  async actFetchPopularPost({ commit }) {
+    try {
+      const response = await this.$api.get('/posts', {
+        params: {
+          page: 1,
+          per_page: 3
+        }
+      });
+
+      if (response.status === 200) {
+        commit('setPopularList', response.data);
+      }
+    } catch(e) {
+      console.error("actFetchPopularPost", e.response.data.message);
+    }
+  },
 }

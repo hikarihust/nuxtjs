@@ -594,4 +594,6 @@ Chức năng Latest Articles (FE + BE)
             https://wordpress.stackexchange.com/questions/59442/how-do-i-get-the-avatar-url-instead-of-an-html-img-tag-when-using-get-avatar
             https://developer.wordpress.org/reference/functions/get_user_meta/
     Render Latest Posts
+Chức năng Popular List (FE + BE)
+    API Popular Posts
     
