@@ -1,14 +1,27 @@
 <template>
   <div class="article-item__thumbnail">
-    <a href="#">
-    <img src="/assets/images/blog-1.jpg" alt="/assets/images/blog-1.jpg">
-    </a>
+    <nuxt-link v-bind:to="slug">
+      <img v-bind:src="thumbnail" v-bind:alt="title">
+    </nuxt-link>
   </div>
 </template>
 
 <script>
 export default {
-
+  props: {
+    slug: {
+      type: String,
+      default: ''
+    },
+    thumbnail: {
+      type: String,
+      default: ''
+    },
+    title: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 

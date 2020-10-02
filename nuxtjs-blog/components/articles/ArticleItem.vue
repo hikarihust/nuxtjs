@@ -1,6 +1,10 @@
 <template>
   <article v-if="post" class="article-item" :class="classNames">
-    <ArticleItemThumbnail />
+    <ArticleItemThumbnail
+      :slug="getSlug"
+      :title="post.title.rendered"
+      :thumbnail="post.featured_media_url"
+    />
     <div class="article-item__content">
       <ArticleItemCategories v-if="isShowCategories" />
       <ArticleItemStats v-if="isShowCategories" />
@@ -12,6 +16,9 @@
       <ArticleItemInfor
         :isShowAvatar="isShowAvatar"
         :created="post.date"
+        :userId="post.author"
+        :nickname="post.author_data.nickname"
+        :avatar="post.author_data.avatar"
       />
     </div>
   </article>

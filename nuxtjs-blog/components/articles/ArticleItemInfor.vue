@@ -1,13 +1,13 @@
 <template>
   <div class="article-item__info">
     <div v-if="isShowAvatar" class="article-item__author-image">
-      <a aria-label="John Doe" href="#">
-      <img src="/assets/images/john-doe.png" alt="john-doe">
-      </a>
+      <nuxt-link aria-label="John Doe" :to="getUserUrl">
+        <img :src="getUserAvatar" :alt="nickname">
+      </nuxt-link>
     </div>
     <div class="article-item__info-right">
       <div class="article-item__author-name">
-        <a href="#"><strong>John Doe</strong></a>
+        <nuxt-link aria-label="John Doe" :to="getUserUrl"><strong>{{nickname}}</strong></nuxt-link>
       </div>
       <div class="article-item__datetime">
         <div class="date">{{ dateTime.format }}</div>
@@ -43,6 +43,18 @@ export default {
       type: String,
       default: new Date()
     },
+    avatar: {
+      type: String,
+      default: ''
+    },
+    nickname: {
+      type: String,
+      default: ''
+    },
+    userId: {
+      type: Number,
+      default: 0
+    }
   },
   computed: {
     dateTime() {
@@ -53,6 +65,16 @@ export default {
         format: createdDayjs.format('DD/MM/YYYY'),
         relative: createdDayjs.fromNow(),
       }
+    },
+    getUserUrl() {
+      return `/user/` + this.userId
+    },
+    getUserAvatar() {
+      if (this.avatar) {
+        return this.avatar;
+      }
+
+      return '/assets/images/default-avatar.png';
     }
   }
 }

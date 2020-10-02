@@ -592,4 +592,6 @@ Chức năng Latest Articles (FE + BE)
         wp_options table -> simple_local_avatars field 
         wp get user avatar url by author id
             https://wordpress.stackexchange.com/questions/59442/how-do-i-get-the-avatar-url-instead-of-an-html-img-tag-when-using-get-avatar
+            https://developer.wordpress.org/reference/functions/get_user_meta/
+    Render Latest Posts
     
