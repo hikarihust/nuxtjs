@@ -608,4 +608,21 @@ Chức năng Popular List (FE + BE)
             }
         }
     Render categories
-    
+    Post view counter
+        Plugin post views count download
+        https://wordpress.org/plugins/post-views-counter/
+        post-views-counter.1.3.2.1.zip -> wp-api\wp-content\plugins rồi giải nén
+        Màn hình Admin -> Plugins -> Active Post Views Counter
+        Mysql: Bảng wp_post_views được thêm vào 
+        Màn hình Admin -> Plugins -> Active Post Views Counter -> View details
+            ->Plugin Homepage -> Docs -> Developer's API 
+        Màn hình Admin -> Settings
+            Counter Mode: PHP 
+            -> Save
+            (Count Interval = 24 hours)
+        Vào trang http://learning-nuxtjs.xyz/wp-api/2020/08/08/cung-nhau-tim-hieu-khai-niem-reactjs-la-gi/
+            id = 18
+            -> view_count tăng lên 1 giá trị 
+        Sau khi check xong thì save về giá trị cũ 
+            Counter Mode: REST API 
+        

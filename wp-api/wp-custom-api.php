@@ -15,6 +15,12 @@
       )
     );
 
+    register_rest_field('post',
+      'view_count',
+      array(
+        'get_callback'  => 'get_rest_post_view_count'
+      )
+    );
   });
 
   function get_rest_featured_media_url($post, $field_name, $request) {
@@ -44,6 +50,17 @@
       'nickname' => '',
       'avatar' => ''
     );
+  }
+
+  function get_rest_post_view_count($post, $field_name, $request) {
+    $post_id = $post['id'];
+
+    if ( function_exists( 'pvc_get_post_views' ) ) {
+      $view_count = pvc_get_post_views( $post_id );
+      return $view_count;
+    }
+
+    return 0;
   }
 
 ?>
