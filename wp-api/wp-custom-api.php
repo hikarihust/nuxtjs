@@ -35,12 +35,14 @@
 
     if ($author_id) {
       return array(
-        'nickname' => get_the_author_meta( 'nickname', $author_id )
+        'nickname' => get_the_author_meta( 'nickname', $author_id ),
+        'avatar' => get_user_meta( $author_id, 'simple_local_avatar' )[0]['full']
       );
     }
     
     return array(
-      'nickname' => ''
+      'nickname' => '',
+      'avatar' => ''
     );
   }
 
