@@ -63,4 +63,12 @@
     return 0;
   }
 
+  add_filter('rest_endpoints', function ($routes) {
+    if ( !$routes['/wp/v2/posts'][0]['args']['orderby']['enum'] ) {
+      return $routes;
+    }
+
+    array_push( $routes['/wp/v2/posts'][0]['args']['orderby']['enum'], 'post_views' );
+    return $routes;
+  });
 ?>

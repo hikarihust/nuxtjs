@@ -29,7 +29,8 @@ export default {
       const response = await this.$api.get('/posts', {
         params: {
           page: 1,
-          per_page: 3
+          per_page: 3,
+          orderby: 'post_views'
         }
       });
 

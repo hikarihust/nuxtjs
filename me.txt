@@ -626,4 +626,22 @@ Chức năng Popular List (FE + BE)
         Sau khi check xong thì save về giá trị cũ 
             Counter Mode: REST API 
     Render view count
-    
+    WP orderby views
+        "/wp/v2/posts": 
+            "orderby":
+            "enum": [
+                    "author",
+                    "date",
+                    "id",
+                    "include",
+                    "modified",
+                    "parent",
+                    "relevance",
+                    "slug",
+                    "include_slugs",
+                    "title"
+                ],
+        wp add_filter rest_endpoints
+            https://developer.wordpress.org/reference/hooks/rest_endpoints/
+            https://tenderfeel.xsrv.jp/wordpress/2917/
+        
