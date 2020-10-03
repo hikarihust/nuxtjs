@@ -14,5 +14,23 @@ export default {
       hashCategories[categoryId] = category;
     })
     state.hashCategories = hashCategories;
+  },
+
+  setArticlesList(state, { curPage, wpTotal, wpTotalPages, articles }) {
+    const data = {
+      curPage,
+      wpTotal,
+      wpTotalPages,
+      articles,
+    }
+
+    if (curPage > 1) {
+      data.articles = [
+        ...state.articlesPaging.articles,
+        ...articles,
+      ];
+    }
+
+    state.articlesPaging = data;
   }
 }

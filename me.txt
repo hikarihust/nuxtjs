@@ -644,4 +644,17 @@ Chức năng Popular List (FE + BE)
         wp add_filter rest_endpoints
             https://developer.wordpress.org/reference/hooks/rest_endpoints/
             https://tenderfeel.xsrv.jp/wordpress/2917/
-        
+Chức năng Articles List - Pagination (FE + BE)
+    API Articles List
+        Chức năng phân trang: 
+            - currentPage 
+            - pageSize 
+            - totalPage/totalPosts 
+        Postman: {{base_url}}/posts?per_page=2&page=1
+            Response header: Có tổng số bài viết và tổng số trang
+                x-wp-total →5
+                x-wp-totalpages →3
+        async actFetchArticlesList({ commit }, { curPage = 1, pageSize = 2 } = {}) {}
+        console.log(Object.keys(response));
+            [ 'status', 'statusText', 'headers', 'config', 'request', 'data' ]
+    

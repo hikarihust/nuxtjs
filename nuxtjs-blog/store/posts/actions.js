@@ -57,5 +57,32 @@ export default {
     } catch(e) {
       console.error("actFetchCategories", e.response.data.message);
     }
+  },
+
+  async actFetchArticlesList({ commit }, { curPage = 1, pageSize = 2 } = {}) {
+    try {
+      const response = await this.$api.get('/posts', {
+        params: {
+          page: curPage,
+          per_page: pageSize,
+        }
+      });
+
+      if (response.status === 200) {
+        const headers = response.headers;
+        const wpTotal = parseInt(headers['x-wp-total']);
+        const wpTotalPages = parseInt(headers['x-wp-totalpages']);
+
+        const data = {
+          curPage,
+          wpTotal,
+          wpTotalPages,
+          articles: response.data,
+        }
+        commit('setArticlesList', data);
+      }
+    } catch(e) {
+      console.error("actFetchArticlesList", e.response.data.message);
+    }
   }
 }

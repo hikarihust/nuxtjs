@@ -3,5 +3,11 @@ export default () => {
     latestList: [],
     popularList: [],
     hashCategories: {},
+    articlesPaging: {
+      curPage: 1,
+      wpTotal: 0,
+      wpTotalPages: 0,
+      articles: [],
+    }
   }
 }
