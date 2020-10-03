@@ -657,4 +657,17 @@ Chức năng Articles List - Pagination (FE + BE)
         async actFetchArticlesList({ commit }, { curPage = 1, pageSize = 2 } = {}) {}
         console.log(Object.keys(response));
             [ 'status', 'statusText', 'headers', 'config', 'request', 'data' ]
+    Render - Native events and Pagination
+        Native events: Dàng buộc events trực tiếp vào Component bao bên ngoài của Button
+            vuejs.org
+            Custom Events -> Binding Native Events to Components
+        Pagination: 
+            check gọi api 
+                if (this.isLoading || !this.hasMoreArticles) {
+                    return;
+                }
+            Không cho tải thêm khi curPage đã đạt ngưỡng wpTotalPages
+            Khi gọi api thì ở mutation cộng dồn data vào data hiện tại 
+                Nếu currentPage = 1 (Trang đầu tiên) -> thay thế toàn bộ articles cũ 
+                Nếu currentPage > 1 -> Nối 2 array lại với nhau dựa vào array cũ và mới 
     
