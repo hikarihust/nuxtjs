@@ -777,4 +777,6 @@ Chức năng Multi Level Menu (FE + BE)
         nuxtjs-blog\plugins\axios.js 
             Tạo thêm 1 instance mới wpApi = http://learning-nuxtjs.xyz/wp-api/wp-json để gọi api 
                 cho menu 
-      
+    Map Menu Items   
+        Dùng map() để chiết xuất dữ liệu id, url, title, child_items
+    
