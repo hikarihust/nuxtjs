@@ -50,6 +50,6 @@ export default {
   build: {
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2'
+    baseUrl: process.env.BASE_URL || 'http://learning-nuxtjs.xyz/wp-api/wp-json'
   }
 }

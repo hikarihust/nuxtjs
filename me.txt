@@ -752,7 +752,7 @@ Chức năng Multi Level Menu (FE + BE)
             -> Thêm Menu mới là con của About us
                 URL: /
                 Link Text: About us 2
-            check http://learning-nuxtjs.xyz/wp-api/wp-json//menus/v1/menus/abc-test
+            check http://learning-nuxtjs.xyz/wp-api/wp-json/menus/v1/menus/abc-test
         Delete Menu ABC Test
         Menu Main Menu
             Thêm vào con của Link 3
@@ -768,5 +768,13 @@ Chức năng Multi Level Menu (FE + BE)
             Link Text: Front End
             URL: /back-end
             Link Text: Back End
-        Check http://learning-nuxtjs.xyz/wp-api/wp-json//menus/v1/menus/footer-menu
-        
+        Check http://learning-nuxtjs.xyz/wp-api/wp-json/menus/v1/menus/footer-menu
+    API Get Main Menus
+        Cài đặt biến môi trường cho Postman
+            wp_base_url: http://learning-nuxtjs.xyz/wp-api/wp-json
+        nuxtjs.config.js 
+            baseUrl: process.env.BASE_URL || 'http://learning-nuxtjs.xyz/wp-api/wp-json'
+        nuxtjs-blog\plugins\axios.js 
+            Tạo thêm 1 instance mới wpApi = http://learning-nuxtjs.xyz/wp-api/wp-json để gọi api 
+                cho menu 
+      
