@@ -1,18 +1,22 @@
 <template>
   <div class="articles-list section">
     <div class="tcl-container">
-      <div class="main-title main-title__search spacing">
+      <!-- <div class="main-title main-title__search spacing">
         <h2>4 Results found for "search query"</h2>
-      </div>
-
+      </div> -->
+      <MainTitle
+        isSearchTitle
+        :title="'4 Results found for search query'"
+      />
       <!-- Article List -->
       <div class="tcl-row tcl-jc-center">
         <div class="tcl-col-12 tcl-col-md-8">
           <ArticleItem
             isShowDesc
             isShowCategories
-            :isStyleRow="isStyleRow"
-            :isStyleCard="isStyleCard"
+            isStyleRow
+            isStyleCard
+            :post="null"
           />
         </div>
       </div>

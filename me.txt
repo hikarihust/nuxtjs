@@ -810,4 +810,5 @@ Chức năng Search theo Keywords, Categories, Tags
     Search Page
         Khi người dùng nhập vào 1 từ nào đó để tìm kiếm -> điều hướng người dùng sang trang khác 
         /search?q=ftttrrr
+    Split Header
     
