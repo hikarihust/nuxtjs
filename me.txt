@@ -670,4 +670,103 @@ Chức năng Articles List - Pagination (FE + BE)
             Khi gọi api thì ở mutation cộng dồn data vào data hiện tại 
                 Nếu currentPage = 1 (Trang đầu tiên) -> thay thế toàn bộ articles cũ 
                 Nếu currentPage > 1 -> Nối 2 array lại với nhau dựa vào array cũ và mới 
-    
+Chức năng Multi Level Menu (FE + BE)
+    WP Custom Menus
+        http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2/
+        -> Danh sách api 
+            /wp/v2/posts
+            /wp/v2/pages
+            /wp/v2/media
+            /wp/v2/taxonomies
+            /wp/v2/tags
+            /wp/v2/users
+            /wp/v2/users/me
+            /wp/v2/comments
+            ... 
+        Không có api của menu 
+        Dữ liệu menu được lưu ở bảng wp_posts
+        Plugin: wp rest api v2 menu
+            https://wordpress.org/plugins/wp-rest-api-v2-menus/
+            WP-REST-API V2 Menus -> download
+            wp-rest-api-v2-menus.0.8.zip -> wp-api\wp-content\plugins rồi giải nén 
+        Màn hình Admin -> Plugins -> Active WP-REST-API V2 Menus
+            View details để xem các api hỗ trợ 
+            /menus/v1/menus list of every registered menu.
+        http://learning-nuxtjs.xyz/wp-api/wp-json/ 
+            -> routes để xem các Endpoints của menu
+            /menus/v1
+            /menus/v1/menus
+        http://learning-nuxtjs.xyz/wp-api/wp-json/menus/v1/menus
+        Màn hình Admin -> Appearance -> Menus -> Delete các Menu 
+            http://learning-nuxtjs.xyz/wp-api/wp-json/menus/v1/menus
+            -> Kết quả trả về array rỗng 
+        Thêm menu:
+            Menu Name: ABC Test
+                URL: /
+                Link Text: Trang Chu 
+            -> Save Menu 
+                URL: /about-us 
+                Link Text: About us 
+                (Là sub item của Trang Chu)
+        Refresh http://learning-nuxtjs.xyz/wp-api/wp-json/menus/v1/menus để kiểm tra kết quả("count": 2,)
+            [
+                {
+                "term_id": 19,
+                "name": "ABC Test",
+                "slug": "abc-test",
+                "term_group": 0,
+                "term_taxonomy_id": 19,
+                "taxonomy": "nav_menu",
+                "description": "",
+                "parent": 0,
+                "count": 2,
+                "filter": "raw"
+                }
+            ]
+        create a new menu
+            Menu Name: Main Menu
+                URL: /
+                Link Text: Link 1
+                Link Text: Link 2
+                    Link Text: Link 3(Con cuat link 2)
+            -> count: 3
+            {
+                "term_id": 20,
+                "name": "Main Menu",
+                "slug": "main-menu",
+                "term_group": 0,
+                "term_taxonomy_id": 20,
+                "taxonomy": "nav_menu",
+                "description": "",
+                "parent": 0,
+                "count": 3,
+                "filter": "raw"
+            }
+        Cần lấy được 1 array chứa các menu con nằm trong Menu lớn
+            /menus/v1/menus/<slug> data for a specific menu.
+            http://learning-nuxtjs.xyz/wp-api/wp-json//menus/v1/menus/abc-test
+        Menu ABC Test 
+            -> Thêm Menu mới là con của Menu Trang Chu 
+                URL: /contact 
+                Link Text: Lien He 
+            -> Thêm Menu mới là con của About us
+                URL: /
+                Link Text: About us 2
+            check http://learning-nuxtjs.xyz/wp-api/wp-json//menus/v1/menus/abc-test
+        Delete Menu ABC Test
+        Menu Main Menu
+            Thêm vào con của Link 3
+                URL: /
+                Link Text: Link 4
+                Link Text: Link 6 (cùng cấp với Link 4)
+            Thêm vào Main Menu(cùng cấp với Link 1 và Link 2)
+                URL: /
+                Link Text: Link 5
+        create a new menu: Footer Menu
+        Thêm vào Footer Menu các menu cùng cấp
+            URL: /fe
+            Link Text: Front End
+            URL: /back-end
+            Link Text: Back End
+        Check http://learning-nuxtjs.xyz/wp-api/wp-json//menus/v1/menus/footer-menu
+        
