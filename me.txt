@@ -796,4 +796,14 @@ Chức năng Multi Level Menu (FE + BE)
     Recursive Components
         Đệ quy Component 
         Khi đệ quy Component thì cần phải đặt tên cho Component và gọi Component theo tên đó 
+    Dynamic Link
+        Edit Link 1:
+            URL: https://www.google.com/
+            Navigation Label(Link Text): Google
+        Edit Link 2:
+            URL: /category/fe
+            Navigation Label(Link Text): Front End 
+        Edit Link 7 -> cùng cấp với Google
+            URL: /
+            Navigation Label(Link Text): Trang Chu 
     

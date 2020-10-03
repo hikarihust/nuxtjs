@@ -1,7 +1,17 @@
 <template>
   <ul :class="classRoot">
     <li v-for="item in menuItems" :key="item.id">
-      <a href="#">{{ item.title }}</a>
+      <nuxt-link
+        v-if="!item.url.startsWith('http')"
+        :to="item.url"
+        :title="item.url"
+      >{{ item.title }}</nuxt-link>
+      <a
+        v-else
+        target="_blank"
+        :href="item.url"
+        :title="item.url"
+      >{{ item.title }}</a>
       <main-menus
         v-if="item.child_items.length !== 0"
         :isRoot="false"
