@@ -1,3 +1,5 @@
+import { hamDeQuyKhacThamSo } from '@/helpers';
+
 export const state = () => {
   return {
     appMainMenus: {
@@ -14,6 +16,13 @@ export const mutations = {
 
 
 export const getters = {
+  mainMenuItems(rootState) {
+    const newItems = rootState.appMainMenus.items.map(item => {
+      return hamDeQuyKhacThamSo(item);
+    });
+    return newItems;
+  }
+  /*
   mainMenuItems(rootState) {
     const newItems = rootState.appMainMenus.items.map(item => {
       const data = {
@@ -57,6 +66,7 @@ export const getters = {
     // console.log("newItems", newItems);
     return newItems;
   }
+  */
 }
 
 

@@ -779,4 +779,18 @@ Chức năng Multi Level Menu (FE + BE)
                 cho menu 
     Map Menu Items   
         Dùng map() để chiết xuất dữ liệu id, url, title, child_items
+    Recursive Menu Items
+        Sử dụng kỹ thuật đệ để map dữ liệu 
+        Một hàm có thể gọi chính nó
+        Dấu hiệu nhận biết là 1 hàm có sự lặp đi lặp lại 
+        Link 6 -> Con của Link 4
+        Thêm Link 7 con của Link 1 
+            URL: /link-7
+            Link Text: Link 7
+        Thêm Link 8 con của Link 6 
+            URL: /link-8
+            Link Text: Link 8
+        Thêm Link 9 con của Link 2(Cùng cấp với Link 3)
+            URL: /link-9
+            Link Text: Link 9
     
