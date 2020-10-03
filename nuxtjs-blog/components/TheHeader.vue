@@ -28,7 +28,11 @@
               <div class="tcl-col-6">
                   <!-- Nav -->
                   <div class="header-nav">
-                      <ul class="header-nav__lists">
+                      <main-menus
+                        :isRoot="true"
+                        :menuItems="mainMenuItems"
+                      />
+                      <!-- <ul class="header-nav__lists">
                           <li><a href="#">Home</a></li>
                           <li>
                               <a href="#">Our Team</a>
@@ -53,7 +57,7 @@
                                   </li>
                               </ul>
                           </li>
-                      </ul>
+                      </ul> -->
                       <ul class="header-nav__lists">
                           <li class="user"><a href="login.html"><i class="icons ion-person"></i> Tài khoản</a></li>
                       </ul>
@@ -65,8 +69,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
-
+  computed: {
+    ...mapGetters([
+      'mainMenuItems'
+    ])
+  },
 }
 </script>
 

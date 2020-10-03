@@ -793,4 +793,7 @@ Chức năng Multi Level Menu (FE + BE)
         Thêm Link 9 con của Link 2(Cùng cấp với Link 3)
             URL: /link-9
             Link Text: Link 9
+    Recursive Components
+        Đệ quy Component 
+        Khi đệ quy Component thì cần phải đặt tên cho Component và gọi Component theo tên đó 
     
