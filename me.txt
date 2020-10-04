@@ -817,4 +817,15 @@ Chức năng Search theo Keywords, Categories, Tags
         "/wp/v2/posts":
             args -> search
     API Search Posts 2
+    Map Categories
+        Using javascript map with a function that has two arguments
+        https://stackoverflow.com/questions/12344087/using-javascript-map-with-a-function-that-has-two-arguments
+    Watch query
+        Nuxtjs WatchQuery Property 
+        https://ja.nuxtjs.org/guides/components-glossary/pages-watchquery/
+        validate()
+            validate is called every time before navigating to a new route. It will be called server-side once 
+            (on the first request to the Nuxt app) and client-side when navigating to further routes. This method 
+            takes the context object as an argument.
+            Hàm này sẽ validate đường dẫn có hợp lệ hay không 
     

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
 export default {
   watchQuery: ['q'],
   validate ({ query }) {
@@ -54,8 +54,10 @@ export default {
     ...mapState({
       wpTotal: state => state.posts.articlesPaging.wpTotal,
       curPage: state => state.posts.articlesPaging.curPage,
-      articles: state => state.posts.articlesPaging.articles,
       wpTotalPages: state => state.posts.articlesPaging.wpTotalPages,
+    }),
+    ...mapGetters({
+      articles: 'posts/getArticleList'
     }),
     hasMoreArticles() {
       return this.curPage < this.wpTotalPages

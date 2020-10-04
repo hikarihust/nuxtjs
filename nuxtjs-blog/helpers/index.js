@@ -18,6 +18,19 @@ function hamDeQuyKhacThamSo(item) {
   return data;
 }
 
+function mapPostCategories(post, hashCategories) {
+    const listCategoriesId = post.categories; // [20, 30, 40]
+    const listCategories = listCategoriesId.map(id => {
+      return hashCategories[id]
+    })
+
+    return {
+      ...post,
+      categories: listCategories
+    }
+}
+
 export {
-  hamDeQuyKhacThamSo
+  hamDeQuyKhacThamSo,
+  mapPostCategories
 }
