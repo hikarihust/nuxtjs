@@ -828,4 +828,27 @@ Chức năng Search theo Keywords, Categories, Tags
             (on the first request to the Nuxt app) and client-side when navigating to further routes. This method 
             takes the context object as an argument.
             Hàm này sẽ validate đường dẫn có hợp lệ hay không 
+    Search Categories
+        http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2
+            /wp/v2/posts
+                endpoints
+                    methods: GET 
+                    args: categories
+                        type: array
+                        "items": {
+                                "type": "integer"
+                            }
+                -> Có thể lấy danh sách bài viết theo categories bất kỳ nào đó 
+            http://learning-nuxtjs.xyz/category/reactjs
+                Từ slug của category lấy được toàn bộ thông tin của category đó để lấy id của categories rồi từ id của category lấy 
+                    danh sách bài viết 
+            /wp/v2/categories
+                endpoints
+                    methods: GET 
+                    args: slug
+                        type: array
+                        "items": {
+                                "type": "string"
+                            }
+        http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2/categories?slug=fe
     
