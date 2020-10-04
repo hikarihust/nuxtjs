@@ -59,12 +59,13 @@ export default {
     }
   },
 
-  async actFetchArticlesList({ commit }, { curPage = 1, pageSize = 2 } = {}) {
+  async actFetchArticlesList({ commit }, { curPage = 1, pageSize = 2, ...restParams } = {}) {
     try {
       const response = await this.$api.get('/posts', {
         params: {
           page: curPage,
           per_page: pageSize,
+          ...restParams
         }
       });
 

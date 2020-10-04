@@ -812,4 +812,8 @@ Chức năng Search theo Keywords, Categories, Tags
         /search?q=ftttrrr
     Split Header
     Search Form
+    API Search Posts 1
+        http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2/
+        "/wp/v2/posts":
+            args -> search
     
