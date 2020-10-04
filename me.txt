@@ -816,4 +816,5 @@ Chức năng Search theo Keywords, Categories, Tags
         http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2/
         "/wp/v2/posts":
             args -> search
+    API Search Posts 2
     

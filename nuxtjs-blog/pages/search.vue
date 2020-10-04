@@ -1,12 +1,9 @@
 <template>
   <div class="articles-list section">
     <div class="tcl-container">
-      <!-- <div class="main-title main-title__search spacing">
-        <h2>4 Results found for "search query"</h2>
-      </div> -->
       <MainTitle
         isSearchTitle
-        :title="'4 Results found for search query'"
+        :title="title"
       />
       <!-- Article List -->
       <div v-for="item in articles" :key="item.id" class="tcl-row tcl-jc-center">
@@ -14,7 +11,6 @@
           <ArticleItem
             isShowDesc
             isShowCategories
-            isStyleRow
             isStyleCard
             :post="item"
           />
@@ -37,6 +33,23 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 export default {
+  watchQuery: ['q'],
+  validate ({ query }) {
+    if (!query.q || !query.q.trim()) {
+      return false;
+    }
+    return true;
+  },
+  async asyncData({ store, query }) {
+    const queryStr = query.q;
+    await store.dispatch('posts/actFetchArticlesList', {
+      search: queryStr
+    })
+
+    return {
+      querySearch: queryStr
+    }
+  },
   computed: {
     ...mapState({
       wpTotal: state => state.posts.articlesPaging.wpTotal,
@@ -46,11 +59,15 @@ export default {
     }),
     hasMoreArticles() {
       return this.curPage < this.wpTotalPages
+    },
+    title() {
+      return `Khoảng ${this.wpTotal} kết quả tới từ khóa "${this.querySearch}"`;
     }
   },
   data() {
     return {
-      isLoading: false
+      isLoading: false,
+      querySearch: '',
     }
   },
   methods: {
@@ -65,7 +82,7 @@ export default {
       this.isLoading = true;
       this.actFetchArticlesList({
         curPage: this.curPage + 1,
-        search: 'reactjs'
+        search: this.querySearch
       })
       .then(() => {
         this.isLoading = false
