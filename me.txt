@@ -853,4 +853,8 @@ Chức năng Search theo Keywords, Categories, Tags
         http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2/categories?slug=fe
 Chức năng Post Detail và List Comments
     Components
+    Note 
+        Css file: 
+            url("../images/bg-author.png");
+            -> url("/assets/images/bg-author.png");
     

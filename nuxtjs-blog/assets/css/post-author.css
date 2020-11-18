@@ -12,7 +12,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: url("../images/bg-author.png");
+      background-image: url("/assets/images/bg-author.png");
       background-size: 8rem;
       opacity: 0.15; }
   .post-author__avatar {

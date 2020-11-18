@@ -20,4 +20,5 @@ export default {
 </script>
 
 <style>
+  @import '~/assets/css/post-author.css';
 </style>
