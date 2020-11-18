@@ -15,7 +15,10 @@
       <!-- End Post Detail Tags -->
 
       <!-- Post Detail Comments -->
-      <PostComments />
+      <PostComments
+        v-bind:comment_count="post.comment_count"
+        v-bind:postId="post.id"
+      />
       <!-- End Post Detail Comments -->
 
     </div>

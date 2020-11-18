@@ -883,4 +883,5 @@ Chức năng Post Detail và List Comments
         Using plugin in Component
             $dayjs(post.date).fromNow()
     Render detail 4
+    Comment parent 1
     
