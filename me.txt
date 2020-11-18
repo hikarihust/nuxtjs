@@ -861,4 +861,8 @@ Chức năng Post Detail và List Comments
         {{base_url}}/posts?slug=vuex-la-gi-va-ket-hop-voi-vue-nhu-the-nao
     Post detail API 2
     Post detail API 3
+        http://learning-nuxtjs.xyz/wp-api/
+        http://learning-nuxtjs.xyz/wp-api/2020/08/08/cung-nhau-tim-hieu-khai-niem-reactjs-la-gi/
+        -> Viết comments 
+    Post detail API 4
     

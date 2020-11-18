@@ -48,6 +48,7 @@ export default {
       const authorId = postDetail.author;
 
       await Promise.all([
+        store.dispatch('comment/actFetchCommentsList', { post }),
         store.dispatch('posts/actFetchRelatedPosts', { authorId })
       ]);
     }
