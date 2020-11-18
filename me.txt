@@ -870,4 +870,9 @@ Chức năng Post Detail và List Comments
             get_comments_number( int|WP_Post $post_id )
                 Retrieves the amount of comments a post has.
                 Return (string|int) If the post exists, a numeric string representing the number of comments the post has, otherwise 0.
+    WP Comment reply 1
+        http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2/comments?per_page=3&page=1&post=18&parent=0
+        http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2/comments?per_page=3&page=1&post=18&parent=5
+        get comment reply count
+            https://stackoverflow.com/questions/44415085/how-to-get-replies-count-of-individual-comment-in-wordpress
     

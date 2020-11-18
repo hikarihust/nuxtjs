@@ -28,6 +28,13 @@
         'get_callback'  => 'get_rest_post_comment_count'
       )
     );
+
+    register_rest_field('comment',
+      'comment_reply_count',
+      array(
+        'get_callback'  => 'get_rest_post_comment_reply_count'
+      )
+    );
   });
 
   function get_rest_featured_media_url($post, $field_name, $request) {
@@ -75,6 +82,13 @@
     $comment_count = get_comments_number($post_id);
 
     return (int)$comment_count;
+  }
+
+  function get_rest_post_comment_reply_count($comment, $field_name, $request) {
+    if($comment['parent'] === 0) {
+      return 99999999;
+    }
+    return 0;
   }
 
   add_filter('rest_endpoints', function ($routes) {
