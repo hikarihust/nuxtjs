@@ -56,13 +56,15 @@
     if ($author_id) {
       return array(
         'nickname' => get_the_author_meta( 'nickname', $author_id ),
+        'description' => get_the_author_meta( 'description', $author_id ),
         'avatar' => get_user_meta( $author_id, 'simple_local_avatar' )[0]['full']
       );
     }
     
     return array(
       'nickname' => '',
-      'avatar' => ''
+      'avatar' => '',
+      'description' => ''
     );
   }
 

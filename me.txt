@@ -882,4 +882,5 @@ Chức năng Post Detail và List Comments
     Render detail 3
         Using plugin in Component
             $dayjs(post.date).fromNow()
+    Render detail 4
     

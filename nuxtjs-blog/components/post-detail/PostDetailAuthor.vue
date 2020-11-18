@@ -11,8 +11,7 @@
     <div class="post-author__nickname">
       <nuxt-link v-bind:to="authorLink">{{ post.author_data.nickname }}</nuxt-link>
     </div>
-      <p class="post-author__desc">Lorem ipsum, dolor sit amet conse ctetur adipi sicing elit.
-      Necessitatibus, vel vero vel vero vel vero vel vero!</p>
+      <p class="post-author__desc">{{ post.author_data.description }}</p>
   </div>
 </template>
 
