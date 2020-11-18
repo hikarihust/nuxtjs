@@ -37,4 +37,7 @@ export default {
   setPostDetail(state, data) {
     state.postDetail = data;
   },
+  setRelatedPosts(state, data) {
+    state.relatedPosts = data;
+  }
 }

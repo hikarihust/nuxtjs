@@ -114,4 +114,22 @@ export default {
       }
     }
   },
+
+  async actFetchRelatedPosts({ commit }, { authorId }) {
+    try {
+      const response = await this.$api.get('/posts', {
+        params: {
+          page: 1,
+          per_page: 5,
+          author: [ authorId ]
+        }
+      });
+
+      if (response.status === 200) {
+        commit('setRelatedPosts', response.data);
+      }
+    } catch(e) {
+      console.error("actFetchRelatedPosts", e.response.data.message);
+    }
+  }
 }

@@ -10,5 +10,6 @@ export default () => {
       articles: [],
     },
     postDetail: null,
+    relatedPosts: [],
   }
 }

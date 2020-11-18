@@ -46,6 +46,10 @@ export default {
       const postDetail= res.post;
       const post = postDetail.id; // postId, authorId
       const authorId = postDetail.author;
+
+      await Promise.all([
+        store.dispatch('posts/actFetchRelatedPosts', { authorId })
+      ]);
     }
   },
 }
