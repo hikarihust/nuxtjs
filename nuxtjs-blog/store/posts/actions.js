@@ -85,5 +85,33 @@ export default {
     } catch(e) {
       console.error("actFetchArticlesList", e.response.data.message);
     }
-  }
+  },
+
+  async actFetchArticleBySlug({ commit }, { slug }) {
+    try {
+      const response = await this.$api.get('/posts', {
+        params: {
+          slug
+        }
+      })
+
+      if (response.status === 200 && response.data.length) {
+        const post = response.data[0];
+        commit('setPostDetail', post);
+        return {
+          ok: true,
+          post
+        }
+      }
+
+      return {
+        ok: false
+      }
+    } catch(e) {
+      console.error("actFetchArticlesList", e.response.data.message);
+      return {
+        ok: false
+      }
+    }
+  },
 }

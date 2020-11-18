@@ -32,7 +32,22 @@
 <script>
 
 export default {
+  validate ({ params, query }) {
+    if(!params.slug || !params.slug.trim()) {
+      return false;
+    }
+    return true;
+  },
+  async asyncData({ params, store }) {
+    const slug = params.slug;
+    const res = await store.dispatch('posts/actFetchArticleBySlug', { slug });
 
+    if (res.ok) {
+      const postDetail= res.post;
+      const post = postDetail.id; // postId, authorId
+      const authorId = postDetail.author;
+    }
+  },
 }
 </script>
 

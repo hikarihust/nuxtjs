@@ -32,5 +32,9 @@ export default {
     }
 
     state.articlesPaging = data;
-  }
+  },
+
+  setPostDetail(state, data) {
+    state.postDetail = data;
+  },
 }

@@ -859,4 +859,5 @@ Chức năng Post Detail và List Comments
             -> url("/assets/images/bg-author.png");
     Post detail API 1
         {{base_url}}/posts?slug=vuex-la-gi-va-ket-hop-voi-vue-nhu-the-nao
+    Post detail API 2
     

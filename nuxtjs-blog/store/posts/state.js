@@ -8,6 +8,7 @@ export default () => {
       wpTotal: 0,
       wpTotalPages: 0,
       articles: [],
-    }
+    },
+    postDetail: null,
   }
 }
