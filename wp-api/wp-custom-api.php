@@ -21,6 +21,13 @@
         'get_callback'  => 'get_rest_post_view_count'
       )
     );
+
+    register_rest_field('post',
+      'comment_count',
+      array(
+        'get_callback'  => 'get_rest_post_comment_count'
+      )
+    );
   });
 
   function get_rest_featured_media_url($post, $field_name, $request) {
@@ -61,6 +68,13 @@
     }
 
     return 0;
+  }
+
+  function get_rest_post_comment_count($post, $field_name, $request) {
+    $post_id = $post['id'];
+    $comment_count = get_comments_number($post_id);
+
+    return (int)$comment_count;
   }
 
   add_filter('rest_endpoints', function ($routes) {

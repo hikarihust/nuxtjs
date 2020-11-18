@@ -865,4 +865,9 @@ Chức năng Post Detail và List Comments
         http://learning-nuxtjs.xyz/wp-api/2020/08/08/cung-nhau-tim-hieu-khai-niem-reactjs-la-gi/
         -> Viết comments 
     Post detail API 4
+    WP Comment count
+        get comment count for post in Wordpress
+            get_comments_number( int|WP_Post $post_id )
+                Retrieves the amount of comments a post has.
+                Return (string|int) If the post exists, a numeric string representing the number of comments the post has, otherwise 0.
     
