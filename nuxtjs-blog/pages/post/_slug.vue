@@ -3,7 +3,7 @@
     <div class="spacing"></div>
 
     <!-- Post Detail Head -->
-    <PostDetailHead />
+    <PostDetailHead v-bind:post="post" />
     <!-- End Post Detail Head -->
 
     <div class="spacing"></div>
@@ -14,7 +14,7 @@
         <div class="post-detail__wrapper">
 
           <!-- Post Detail Content -->
-          <PostDetailContent />
+          <PostDetailContent v-bind:post="post" />
           <!-- EndPost Detail Content -->
 
           <!-- Post Detail Sidebar -->
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-
+import { mapState } from 'vuex';
 export default {
   validate ({ params, query }) {
     if(!params.slug || !params.slug.trim()) {
@@ -52,6 +52,11 @@ export default {
         store.dispatch('posts/actFetchRelatedPosts', { authorId })
       ]);
     }
+  },
+  computed: {
+    ...mapState({
+      post: state => state.posts.postDetail
+    })
   },
 }
 </script>

@@ -26,12 +26,6 @@
 </template>
 
 <script>
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-import localeVi from 'dayjs/locale/vi';
-
-dayjs.locale(localeVi);
-dayjs.extend(relativeTime);
 
 export default {
   props: {
@@ -59,7 +53,7 @@ export default {
   computed: {
     dateTime() {
       let created = this.created;
-      let createdDayjs = dayjs(created);
+      let createdDayjs = this.$dayjs(created);
 
       return {
         format: createdDayjs.format('DD/MM/YYYY'),

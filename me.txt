@@ -876,4 +876,5 @@ Chức năng Post Detail và List Comments
         get comment reply count
             https://stackoverflow.com/questions/44415085/how-to-get-replies-count-of-individual-comment-in-wordpress
     WP Comment reply 2
+    Render detail 1
     
