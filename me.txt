@@ -879,4 +879,7 @@ Chức năng Post Detail và List Comments
     Render detail 1
     Render detail 2
         http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2/tags?include=17,7
+    Render detail 3
+        Using plugin in Component
+            $dayjs(post.date).fromNow()
     
