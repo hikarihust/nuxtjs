@@ -85,8 +85,15 @@
   }
 
   function get_rest_post_comment_reply_count($comment, $field_name, $request) {
+    $post_id = $comment['post'];
+    $comment_parent_id = $comment['id'];
     if($comment['parent'] === 0) {
-      return 99999999;
+      global $wpdb;
+      $query = "SELECT COUNT(comment_ID) AS reply_count FROM $wpdb->comments 
+      WHERE `comment_post_ID` = $post_id AND `comment_approved` = 1 AND `comment_parent` = $comment_parent_id";
+      $data = $wpdb->get_row($query);
+
+      return (int)$data->reply_count;
     }
     return 0;
   }

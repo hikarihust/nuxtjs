@@ -875,4 +875,5 @@ Chức năng Post Detail và List Comments
         http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2/comments?per_page=3&page=1&post=18&parent=5
         get comment reply count
             https://stackoverflow.com/questions/44415085/how-to-get-replies-count-of-individual-comment-in-wordpress
+    WP Comment reply 2
     
