@@ -851,4 +851,6 @@ Chức năng Search theo Keywords, Categories, Tags
                                 "type": "string"
                             }
         http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2/categories?slug=fe
+Chức năng Post Detail và List Comments
+    Components
     
