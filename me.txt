@@ -890,4 +890,5 @@ Chức năng Post Detail và List Comments
         Đối với comment thì ở lần loadMore đầu tiên thì curPage sẽ có giá trị là 1
             curPage: 0,
             wpTotalPages: 1,
+    Comment reply 3
     

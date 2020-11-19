@@ -3,28 +3,29 @@
     <PostCommentSection
       v-bind:comment="comment"
     />
-    <div class="comments__hidden" v-if="comment.comment_reply_count !== 0">
-      <a href="#" v-on:click.prevent="handleLoadReplyComments">
-        <i class="icons ion-ios-undo"></i>
-        Xem thêm {{ comment.comment_reply_count }} câu trả lời
-      </a>
-    </div>
-
-    <div class="comments__hidden" v-else>
+    <!-- <div class="comments__hidden" v-else>
       <a href="#">
         <i class="icons ion-ios-undo"></i>
         Trả lời bình luận
       </a>
-    </div>
+    </div> -->
     <!-- Reply Comments -->
-    <!-- <ul class="comments">
-      <li class="item">
-        <PostCommentSection />
+    <ul class="comments">
+      <li
+        class="item"
+        v-for="item in commentsReplyPaging.commentsReply"
+        v-bind:key="item.id"
+      >
+        <PostCommentSection v-bind:comment="item" />
       </li>
-      <li class="item">
-        <PostCommentSection />
-      </li>
-    </ul> -->
+    </ul>
+
+    <div class="comments__hidden" v-if="comment.comment_reply_count - commentsReplyPaging.commentsReply.length !== 0">
+      <a href="#" v-on:click.prevent="handleLoadReplyComments">
+        <i class="icons ion-ios-undo"></i>
+        Xem thêm {{ comment.comment_reply_count - commentsReplyPaging.commentsReply.length }} câu trả lời
+      </a>
+    </div>
 
     <!-- Reply form -->
     <!-- <div class="comments__form">
