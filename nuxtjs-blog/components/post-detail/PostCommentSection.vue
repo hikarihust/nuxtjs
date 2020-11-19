@@ -12,7 +12,11 @@
         </nuxt-link>
         <p class="comments__section--time">{{ $dayjs(comment.date).fromNow() }}</p>
         <div class="comments__section--text" v-html="comment.content.rendered"></div>
-        <!-- <i class="ion-reply comments__section--reply"></i> -->
+        <i
+          v-if="isParent"
+          class="ion-reply comments__section--reply"
+          v-on:click="handleShowReply"
+        />
       </div>
     </div>
 </template>
@@ -23,6 +27,10 @@ export default {
     comment: {
       type: Object,
       default: null
+    },
+    isParent: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -36,6 +44,11 @@ export default {
 
       const userId = this.comment.author;
       return `/assets/images/avatar${userId % 4 + 1}.jpg`;
+    }
+  },
+  methods: {
+    handleShowReply() {
+      this.$emit('replyEvent');
     }
   },
 }

@@ -1,17 +1,10 @@
 <template>
   <div class="post-detail__comments">
-    <div class="comments__form">
-      <div class="comments__form--control">
-        <div class="comments__section--avatar">
-          <a href="#">
-            <img src="/assets/images/avatar1.jpg" alt="">
-          </a>
-        </div>
-        <textarea name=""></textarea>
-      </div>
-      <div class="text-right">
-        <button class="btn btn-default">Submit</button>
-      </div>
+    <PostCommentsForm
+      v-if="isLogin"
+    />
+    <div v-else>
+      <p>Vui lòng <nuxt-link to="/login">đăng nhập</nuxt-link> để đăng bình luận mới</p>
     </div>
     <p>{{ comment_count }} Comments</p>
     <ul class="comments">
@@ -34,7 +27,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
 export default {
   props: {
     comment_count: {
@@ -52,6 +45,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      isLogin: 'auth/isLogin'
+    }),
     ...mapState({
       wpTotal: state => state.comment.commentsPaging.wpTotal,
       curPage: state => state.comment.commentsPaging.curPage,

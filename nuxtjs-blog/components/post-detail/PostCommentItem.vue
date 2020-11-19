@@ -2,13 +2,9 @@
   <li class="item" v-if="comment">
     <PostCommentSection
       v-bind:comment="comment"
+      v-bind:isParent="true"
+      v-on:replyEvent="handleReplyEvent"
     />
-    <!-- <div class="comments__hidden" v-else>
-      <a href="#">
-        <i class="icons ion-ios-undo"></i>
-        Trả lời bình luận
-      </a>
-    </div> -->
     <!-- Reply Comments -->
     <ul class="comments">
       <li
@@ -26,21 +22,13 @@
         Xem thêm {{ comment.comment_reply_count - commentsReplyPaging.commentsReply.length }} câu trả lời
       </a>
     </div>
-
     <!-- Reply form -->
-    <!-- <div class="comments__form">
-      <div class="comments__form--control">
-        <div class="comments__section--avatar">
-          <a href="#">
-            <img src="/assets/images/avatar1.jpg" alt="">
-          </a>
-        </div>
-        <textarea name=""></textarea>
-      </div>
-      <div class="text-right">
-        <button class="btn btn-default">Submit</button>
-      </div>
-    </div> -->
+    <PostCommentsForm
+      v-if="isShowFormReply"
+      v-bind:placeholder="
+        'Trả lời bình luận của ' + comment.author_data.nickname
+      "
+    />
   </li>
 </template>
 
@@ -55,6 +43,7 @@ export default {
   },
   data() {
     return {
+      isShowFormReply: false,
       isLoading: false,
     };
   },
@@ -105,6 +94,9 @@ export default {
       }).then(() => {
         this.isLoading = false;
       });
+    },
+    handleReplyEvent() {
+      this.isShowFormReply = !this.isShowFormReply;
     },
   }
 }
