@@ -67,7 +67,13 @@ export default {
         }
       }
       const response = await this.$api.post('/comments', data, config);
-      console.log('response', response);
+
+      if (response.status === 201) {
+        commit('posts/increaseCommentCount', null, { root: true });
+        if (parent === 0) {
+          commit('pushParentComments', response.data);
+        }
+      }
     } catch (e) {
       console.error(e);
     }

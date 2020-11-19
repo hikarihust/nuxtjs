@@ -942,4 +942,7 @@ Chức năng Authentication và Post Comments
         Gửi bình luận: author, content, post, parent
     Post Parent Cmt 2
         rootState: Lấy được cả thông tin của của các module khác 
+    Post Parent Cmt 3
+        commit sang 1 module khác
+        commit('posts/increaseCommentCount', null, { root: true });
     

@@ -39,5 +39,13 @@ export default {
   },
   setRelatedPosts(state, data) {
     state.relatedPosts = data;
+  },
+  increaseCommentCount(postsState) {
+    if (postsState.postDetail) {
+      postsState.postDetail = {
+        ...postsState.postDetail,
+        comment_count: postsState.postDetail.comment_count + 1
+      }
+    }
   }
 }

@@ -38,4 +38,13 @@ export default {
       [key]: data,
     }
   },
+  pushParentComments(state, newComment) {
+    state.commentsPaging = {
+      ...state.commentsPaging,
+      comments: [
+        ...state.commentsPaging.comments,
+        newComment,
+      ]
+    }
+  },
 }
