@@ -29,7 +29,13 @@ export default {
           wpTotalPages,
           comments: response.data,
         }
-        commit('setCommentsList', data);
+        if (parent === 0) {
+          // Fetch parent comment
+          commit('setCommentsList', data);
+        } else {
+          data.parentId = parent;
+          commit('setCommentsReply', data);
+        }
       }
     } catch(e) {
       console.error("actFetchCommentsList", e.response.data.message);

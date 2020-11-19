@@ -4,7 +4,7 @@
       v-bind:comment="comment"
     />
     <div class="comments__hidden" v-if="comment.comment_reply_count !== 0">
-      <a href="#">
+      <a href="#" v-on:click.prevent="handleLoadReplyComments">
         <i class="icons ion-ios-undo"></i>
         Xem thêm {{ comment.comment_reply_count }} câu trả lời
       </a>
@@ -52,6 +52,11 @@ export default {
       default: null,
     },
   },
+  data() {
+    return {
+      isLoading: false,
+    };
+  },
   computed: {
     ...mapState({
       hashCommentsReplyPaging: (state) => state.comment.hashCommentsReplyPaging,
@@ -63,9 +68,6 @@ export default {
       return this.comment.id;
     },
     commentsReplyPaging() {
-      if(this.parentId === 0) {
-        return null;
-      }
       const key = "reply-parent-" + this.parentId;
 
       if (this.hashCommentsReplyPaging.hasOwnProperty(key)) {
@@ -73,11 +75,35 @@ export default {
       }
 
       return {
-        curPage: 1,
+        curPage: 0,
         wpTotal: 0,
-        wpTotalPages: 0,
+        wpTotalPages: 1,
         commentsReply: [],
       };
+    },
+    hasMoreCommentsReply() {
+      return (
+        this.commentsReplyPaging.curPage < this.commentsReplyPaging.wpTotalPages
+      );
+    },
+  },
+  methods: {
+    ...mapActions({
+      actFetchCommentsList: "comment/actFetchCommentsList",
+    }),
+    handleLoadReplyComments() {
+      if (this.isLoading || !this.hasMoreCommentsReply) {
+        return;
+      }
+
+      this.isLoading = true;
+      this.actFetchCommentsList({
+        curPage: this.commentsReplyPaging.curPage + 1,
+        post: this.comment.post,
+        parent: this.parentId
+      }).then(() => {
+        this.isLoading = false;
+      });
     },
   }
 }
