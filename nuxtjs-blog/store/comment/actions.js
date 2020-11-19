@@ -4,6 +4,7 @@ export default {
     pageSize = 2,
     parent = 0,
     post,
+    exclude = [],
     ...restParams
   } = {}) {
     try {
@@ -14,6 +15,7 @@ export default {
           parent,
           post,
           order: 'asc',
+          exclude,
           ...restParams
         }
       });
@@ -73,9 +75,18 @@ export default {
         if (parent === 0) {
           commit('pushParentComments', response.data);
         }
+
+        return {
+          ok: true,
+          comment: response.data
+        }
       }
     } catch (e) {
       console.error(e);
+      return {
+        ok: false,
+        error: e.message,
+      }
     }
   }
 }

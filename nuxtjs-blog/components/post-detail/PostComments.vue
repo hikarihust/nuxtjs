@@ -42,7 +42,8 @@ export default {
   },
   data() {
     return {
-      isLoading: false
+      isLoading: false,
+      commentsExclude: []
     }
   },
   computed: {
@@ -72,7 +73,8 @@ export default {
       this.isLoading = true;
       this.actFetchCommentsList({
         curPage: this.curPage + 1,
-        post: this.postId
+        post: this.postId,
+        exclude: this.commentsExclude
       })
       .then(() => {
         this.isLoading = false
@@ -82,6 +84,11 @@ export default {
       this.actPostNewComment({
         content,
         post: this.postId
+      })
+      .then(res => {
+        if (res.ok) {
+          this.commentsExclude.push(res.comment.id);
+        }
       })
     }
   }

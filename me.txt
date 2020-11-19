@@ -945,4 +945,16 @@ Chức năng Authentication và Post Comments
     Post Parent Cmt 3
         commit sang 1 module khác
         commit('posts/increaseCommentCount', null, { root: true });
+    Post Parent Cmt 4
+        Tái hiện Error:
+            Server(Database) 11 12 13
+            Pagination: 11 12
+            Thêm mới bình luận 14
+            Server(Database) 11 12 13 14
+            Pagination 11 12 14
+            Nhấn vào Button để loadMore Pagination 11 12 14 13 14
+            -> Hiện tượng trùng dữ liệu ở 14
+        /wp/v2/comments(GET)
+        exclude: Ensure result set excludes specific IDs
+        include: Limit result set to specific IDs
     
