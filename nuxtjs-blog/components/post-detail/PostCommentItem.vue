@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 export default {
   props: {
     comment: {
@@ -51,6 +52,34 @@ export default {
       default: null,
     },
   },
+  computed: {
+    ...mapState({
+      hashCommentsReplyPaging: (state) => state.comment.hashCommentsReplyPaging,
+    }),
+    parentId() {
+      if (!this.comment) {
+        return 0;
+      }
+      return this.comment.id;
+    },
+    commentsReplyPaging() {
+      if(this.parentId === 0) {
+        return null;
+      }
+      const key = "reply-parent-" + this.parentId;
+
+      if (this.hashCommentsReplyPaging.hasOwnProperty(key)) {
+        return this.hashCommentsReplyPaging[key];
+      }
+
+      return {
+        curPage: 1,
+        wpTotal: 0,
+        wpTotalPages: 0,
+        commentsReply: [],
+      };
+    },
+  }
 }
 </script>
 
