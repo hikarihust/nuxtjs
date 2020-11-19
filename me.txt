@@ -923,4 +923,15 @@ Chức năng Authentication và Post Comments
         Lấy thông tin user
             {{base_url}}/users/me
                 Authorization: Bearer {{token_admin}}
+    Access Token Cookie
+        Localstorage:
+            Chỉ có thể truy cập vào và lấy thông tin từ phía client 
+        Cookie:
+            Có thể lấy thông tin từ phía client 
+            Có thể lấy được thông tin Cookie ở phía server(Lấy thông tin thông qua header được gửi lên trong mỗi request -> 
+                trình duyệt tự động gắn Cookie header mỗi khi request)
+        Thư viện hỗ trợ để parse giá trị Cookie 
+            https://www.npmjs.com/ search Cookie 
+            https://www.npmjs.com/package/cookie
+            yarn add cookie
     

@@ -1,4 +1,5 @@
 import { hamDeQuyKhacThamSo } from '@/helpers';
+import cookie from 'cookie';
 
 export const state = () => {
   return {
@@ -71,7 +72,8 @@ export const getters = {
 
 
 export const actions = {
-  async nuxtServerInit({ dispatch }) {
+  async nuxtServerInit({ dispatch }, { req }) {
+    // console.log(cookie.parse(req.headers.cookie).access_token);
     await Promise.all([
       dispatch('posts/actFetchCategories'),
       dispatch('actFetchMainMenus'),
