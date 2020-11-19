@@ -935,4 +935,5 @@ Chức năng Authentication và Post Comments
             https://www.npmjs.com/package/cookie
             yarn add cookie
     API Me
+    Auth Getters
     
