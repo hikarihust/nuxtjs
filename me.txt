@@ -891,4 +891,25 @@ Chức năng Post Detail và List Comments
             curPage: 0,
             wpTotalPages: 1,
     Comment reply 3
+Chức năng Authentication và Post Comments
+    WP Jwt 1
+        rest api handbook wordpress
+        https://developer.wordpress.org/rest-api/
+        https://developer.wordpress.org/rest-api/using-the-rest-api/
+        https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+            Cookie Authentication
+            Authentication Plugins
+        https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/
+            (Authentication Plugins)
+            JWT Authentication for WP REST API -> Install
+            ->Active Plugin
+            wp-api\wp-content\plugins\jwt-authentication-for-wp-rest-api
+        https://api.wordpress.org/secret-key/1.1/salt/
+            wp-config.php
+                define('JWT_AUTH_SECRET_KEY', '********************************');
+        When the plugin is activated, a new namespace is added
+            http://learning-nuxtjs.xyz/wp-api/wp-json/jwt-auth/v1
+        Postman
+            wp_base_url: http://learning-nuxtjs.xyz/wp-api/wp-json
+            {{wp_base_url}}/jwt-auth/v1/token
     
