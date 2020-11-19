@@ -940,4 +940,6 @@ Chức năng Authentication và Post Comments
     Post Parent Cmt 1
         http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2
         Gửi bình luận: author, content, post, parent
+    Post Parent Cmt 2
+        rootState: Lấy được cả thông tin của của các module khác 
     

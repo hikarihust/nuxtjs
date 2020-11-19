@@ -61,6 +61,7 @@ export default {
   },
   methods: {
     ...mapActions({
+      actPostNewComment: 'comment/actPostNewComment',
       actFetchCommentsList: 'comment/actFetchCommentsList',
     }),
     handleLoadMore() {
@@ -77,8 +78,11 @@ export default {
         this.isLoading = false
       })
     },
-    handlePostParentComment(data) {
-      console.log('handlePostParentComment', data);
+    handlePostParentComment({ content }) {
+      this.actPostNewComment({
+        content,
+        post: this.postId
+      })
     }
   }
 }

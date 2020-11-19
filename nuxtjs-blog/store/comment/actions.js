@@ -41,4 +41,35 @@ export default {
       console.error("actFetchCommentsList", e.response.data.message);
     }
   },
+  async actPostNewComment({ commit, rootState }, {
+    post, // post id
+    content,
+    parent = 0
+  }) {
+    if (!rootState.auth.currentUser) {
+      return {
+        ok: false
+      }
+    }
+
+    try {
+      const token = rootState.auth.token;
+      const author =  rootState.auth.currentUser.id;
+      const data = {
+        post,
+        author,
+        content,
+        parent,
+      };
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }
+      const response = await this.$api.post('/comments', data, config);
+      console.log('response', response);
+    } catch (e) {
+      console.error(e);
+    }
+  }
 }
