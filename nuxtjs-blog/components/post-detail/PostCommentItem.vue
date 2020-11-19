@@ -25,6 +25,7 @@
     <!-- Reply form -->
     <PostCommentsForm
       v-if="isShowFormReply"
+      v-on:postCommentEvent="handlePostReplyComment"
       v-bind:placeholder="
         'Trả lời bình luận của ' + comment.author_data.nickname
       "
@@ -98,6 +99,9 @@ export default {
     handleReplyEvent() {
       this.isShowFormReply = !this.isShowFormReply;
     },
+    handlePostReplyComment(data) {
+      console.log('handlePostReplyComment', data);
+    }
   }
 }
 </script>

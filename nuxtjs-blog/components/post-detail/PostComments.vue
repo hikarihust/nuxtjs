@@ -2,6 +2,7 @@
   <div class="post-detail__comments">
     <PostCommentsForm
       v-if="isLogin"
+      v-on:postCommentEvent="handlePostParentComment"
     />
     <div v-else>
       <p>Vui lòng <nuxt-link to="/login">đăng nhập</nuxt-link> để đăng bình luận mới</p>
@@ -76,6 +77,9 @@ export default {
         this.isLoading = false
       })
     },
+    handlePostParentComment(data) {
+      console.log('handlePostParentComment', data);
+    }
   }
 }
 </script>

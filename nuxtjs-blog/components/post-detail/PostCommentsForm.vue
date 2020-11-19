@@ -6,10 +6,13 @@
           <img v-bind:src="avatar" v-bind:alt="currentUser.name">
         </nuxt-link>
       </div>
-      <textarea v-bind:placeholder="placeholder"></textarea>
+      <textarea v-bind:placeholder="placeholder" v-model="content"></textarea>
     </div>
     <div class="text-right">
-      <button class="btn btn-default">Submit</button>
+      <AppButton
+          v-bind:isLoading="isLoading"
+          v-on:click.native="handleSubmitComment"
+        >Submit</AppButton>
     </div>
   </div>
 </template>
@@ -23,6 +26,12 @@ export default {
       default: 'Để lại bình luận của bạn ...'
     },
   },
+  data() {
+    return {
+      content: '',
+      isLoading: false,
+    }
+  },
   computed: {
     ...mapGetters({
       avatar: 'auth/avatar'
@@ -33,7 +42,15 @@ export default {
     authorLink() {
       return `/user/${this.currentUser.id}`;
     },
-  }
+  },
+  methods: {
+    handleSubmitComment() {
+      const data = {
+        content: this.content,
+      }
+      this.$emit('postCommentEvent', data)
+    }
+  },
 }
 </script>
 
