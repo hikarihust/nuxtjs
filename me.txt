@@ -912,4 +912,15 @@ Chức năng Authentication và Post Comments
         Postman
             wp_base_url: http://learning-nuxtjs.xyz/wp-api/wp-json
             {{wp_base_url}}/jwt-auth/v1/token
+    WP Jwt 2
+        To enable this option you’ll need to edit your .htaccess file adding the follow
+            RewriteEngine on
+            RewriteCond %{HTTP:Authorization} ^(.*)
+            RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
+            SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+        WP-JSON/JWT-AUTH/V1/TOKEN/VALIDATE
+        {{wp_base_url}}/jwt-auth/v1/token/validate
+        Lấy thông tin user
+            {{base_url}}/users/me
+                Authorization: Bearer {{token_admin}}
     
