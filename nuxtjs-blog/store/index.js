@@ -1,5 +1,4 @@
-import { hamDeQuyKhacThamSo } from '@/helpers';
-import cookie from 'cookie';
+import { hamDeQuyKhacThamSo, getTokenFromCookie } from '@/helpers';
 
 export const state = () => {
   return {
@@ -74,9 +73,12 @@ export const getters = {
 export const actions = {
   async nuxtServerInit({ dispatch }, { req }) {
     // console.log(cookie.parse(req.headers.cookie).access_token);
+    const token = getTokenFromCookie(req);
+
     await Promise.all([
       dispatch('posts/actFetchCategories'),
       dispatch('actFetchMainMenus'),
+      dispatch('auth/actFetchCurrentUser', token),
     ])
   },
   async actFetchMainMenus({ commit }) {

@@ -1,4 +1,6 @@
 
+import cookie from 'cookie';
+
 function hamDeQuyKhacThamSo(item) {
   const data = {
     id: item.ID,
@@ -30,7 +32,18 @@ function mapPostCategories(post, hashCategories) {
     }
 }
 
+function getTokenFromCookie(request) {
+  try {
+    const cookieString = request.headers.cookie;
+    const cookieObj = cookie.parse(cookieString);
+    return cookieObj.access_token;
+  } catch(e) {
+    return '';
+  }
+}
+
 export {
   hamDeQuyKhacThamSo,
-  mapPostCategories
+  mapPostCategories,
+  getTokenFromCookie
 }
