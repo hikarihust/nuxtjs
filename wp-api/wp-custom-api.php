@@ -8,7 +8,7 @@
       )
     );
 
-    register_rest_field('post',
+    register_rest_field(array('post', 'comment'),
       'author_data',
       array(
         'get_callback'  => 'get_rest_author_post_data'
@@ -50,8 +50,8 @@
     return '';
   }
 
-  function get_rest_author_post_data($post, $field_name, $request) {
-    $author_id = $post['author'];
+  function get_rest_author_post_data($object, $field_name, $request) {
+    $author_id = $object['author'];
 
     if ($author_id) {
       return array(

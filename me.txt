@@ -884,4 +884,5 @@ Chức năng Post Detail và List Comments
             $dayjs(post.date).fromNow()
     Render detail 4
     Comment parent 1
+    Comment parent 2
     

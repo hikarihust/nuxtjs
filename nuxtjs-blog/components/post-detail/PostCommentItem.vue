@@ -1,6 +1,8 @@
 <template>
   <li class="item" v-if="comment">
-    <PostCommentSection />
+    <PostCommentSection
+      v-bind:comment="comment"
+    />
     <div class="comments__hidden" v-if="comment.comment_reply_count !== 0">
       <a href="#">
         <i class="icons ion-ios-undo"></i>
