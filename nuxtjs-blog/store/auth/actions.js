@@ -22,6 +22,13 @@ export default {
       }
     }
   },
+  actLogout({ commit }) {
+    commit('setCurrentUser', {
+      token: '',
+      user: null
+    })
+    document.cookie = `access_token=`;
+  },
   async actLogin({ dispatch }, { username, password }) {
     try {
       const response = await this.$wpApi.post('/jwt-auth/v1/token', {

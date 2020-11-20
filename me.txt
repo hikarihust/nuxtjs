@@ -967,4 +967,5 @@ Chức năng Authentication và Post Comments
         https://nuxtjs.org/docs/2.x/components-glossary/pages-middleware
     Login 2
         e.preventDefault();
+    Logout
     

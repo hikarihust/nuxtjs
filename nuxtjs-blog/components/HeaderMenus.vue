@@ -11,6 +11,9 @@
         <li v-if="isLogin" class="user">
           <nuxt-link to="/dashboard">
             <i class="icons ion-person"></i> {{ currentUser.name }}</nuxt-link>
+          <ul>
+            <li v-on:click="handleLogout" >Đăng xuất</li>
+          </ul>
         </li>
         <li v-else class="user">
           <nuxt-link to="/login"><i class="icons ion-person"></i> Tài khoản</nuxt-link>
@@ -21,7 +24,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex';
+import { mapGetters, mapState, mapActions } from 'vuex';
 export default {
   computed: {
     ...mapGetters([
@@ -33,6 +36,15 @@ export default {
     ...mapState({
       currentUser: state => state.auth.currentUser
     })
+  },
+  methods: {
+    ...mapActions({
+      actLogout: 'auth/actLogout'
+    }),
+    handleLogout() {
+      this.actLogout();
+      this.$router.push('/login');
+    }
   },
 }
 </script>
