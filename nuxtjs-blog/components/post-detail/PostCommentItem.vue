@@ -80,6 +80,7 @@ export default {
   },
   methods: {
     ...mapActions({
+      actPostNewComment: 'comment/actPostNewComment',
       actFetchCommentsList: "comment/actFetchCommentsList",
     }),
     handleLoadReplyComments() {
@@ -99,8 +100,17 @@ export default {
     handleReplyEvent() {
       this.isShowFormReply = !this.isShowFormReply;
     },
-    handlePostReplyComment(data) {
-      console.log('handlePostReplyComment', data);
+    handlePostReplyComment({ content }) {
+      this.actPostNewComment({
+        content,
+        post: this.comment.post,
+        parent: this.parentId,
+      })
+      .then(res => {
+        if (res.ok) {
+          this.commentsExclude.push(res.comment.id);
+        }
+      })
     }
   }
 }

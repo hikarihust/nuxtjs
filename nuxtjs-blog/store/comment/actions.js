@@ -74,6 +74,12 @@ export default {
         commit('posts/increaseCommentCount', null, { root: true });
         if (parent === 0) {
           commit('pushParentComments', response.data);
+        } else {
+          commit('increaseCommentReplyCount', parent);
+          commit('pushReplyComments', {
+            parentId: parent,
+            newComment: response.data
+          });
         }
 
         return {

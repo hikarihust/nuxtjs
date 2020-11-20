@@ -47,4 +47,43 @@ export default {
       ]
     }
   },
+  increaseCommentReplyCount(state, parentId) {
+    let isFound = false;
+    const newComments = state
+      .commentsPaging
+      .comments
+      .map(cmt => {
+        if (cmt.id === parentId) {
+          isFound = true;
+          return {
+            ...cmt,
+            comment_reply_count: cmt.comment_reply_count + 1
+          }
+        }
+        return cmt;
+      })
+
+    if (isFound === true) {
+      state.commentsPaging = {
+        ...state.commentsPaging,
+        comments: newComments,
+      }
+    }
+  },
+  pushReplyComments(state, { parentId, newComment }) {
+    const key = `reply-parent-${parentId}`;
+    if (state.hashCommentsReplyPaging[key]) {
+
+    } else {
+      state.hashCommentsReplyPaging = {
+        ...state.hashCommentsReplyPaging,
+        [key]: {
+          commentsReply: [newComment],
+          curPage: 0,
+          wpTotal: 1,
+          wpTotalPages: 1,
+        }
+      }
+    }
+  }
 }
