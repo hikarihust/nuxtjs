@@ -982,4 +982,6 @@ Chức năng Authentication và Post Comments
         {{base_url}}/users/register
         WP_REST_Response
         WP_Error
+    WP Register Route 3
+        Validate dữ liệu người dùng gửi lên cho chức năng Register
     
