@@ -46,6 +46,7 @@ export default {
     return {
       isShowFormReply: false,
       isLoading: false,
+      commentsExclude: [],
     };
   },
   computed: {
@@ -92,7 +93,8 @@ export default {
       this.actFetchCommentsList({
         curPage: this.commentsReplyPaging.curPage + 1,
         post: this.comment.post,
-        parent: this.parentId
+        parent: this.parentId,
+        exclude: this.commentsExclude,
       }).then(() => {
         this.isLoading = false;
       });

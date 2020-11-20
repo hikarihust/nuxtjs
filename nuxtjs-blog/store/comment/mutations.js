@@ -83,7 +83,17 @@ export default {
   pushReplyComments(state, { parentId, newComment }) {
     const key = `reply-parent-${parentId}`;
     if (state.hashCommentsReplyPaging[key]) {
-
+      const newCommentsReply = [
+        ...state.hashCommentsReplyPaging[key].commentsReply,
+        newComment
+      ]
+      state.hashCommentsReplyPaging = {
+        ...state.hashCommentsReplyPaging,
+        [key]: {
+          ...state.hashCommentsReplyPaging[key],
+          commentsReply: newCommentsReply,
+        }
+      }
     } else {
       state.hashCommentsReplyPaging = {
         ...state.hashCommentsReplyPaging,
