@@ -29,6 +29,28 @@
     ));
   });
 
+	function tcl_check_username( $value ) {
+		$username = (string) $value;
+
+		if ( ! validate_username( $username ) ) {
+			return new WP_Error(
+				'rest_user_invalid_username',
+				__( 'This username is invalid because it uses illegal characters. Please enter a valid username.' ),
+				array( 'status' => 400 )
+			);
+    }
+    
+    if ( false !== strpos( $username, ' ' ) ) {
+			return new WP_Error(
+				'rest_user_invalid_username',
+				__( 'Usernames cannot contain the space character.' ),
+				array( 'status' => 400 )
+			);
+		}
+
+		return $username;
+	}
+
 	function tcl_check_user_password( $value) {
 		$password = (string) $value;
 
@@ -57,23 +79,36 @@
 		}
 
 		return $password;
-	}
+  }
+  
+  function tcl_check_nickname($value, $default) {
+    $nickname = (string) $value;
+
+		if ( empty( $nickname ) ) {
+      return $default;
+    }
+    
+    return $nickname;
+  }
 
   function handle_route_users_register($request) {
-    /*
-    $status = 200;
-    $data = array(
-      'email' => $request->get_param('email'),
-      'password' => $request->get_param('password')
-    );
-    $response = new WP_REST_Response( $data, $status );
-    */
-
     $email = $request->get_param('email');
-    $username = $request->get_param('username');
+    $username = tcl_check_username($request->get_param('username'));
     $password = tcl_check_user_password($request->get_param('password'));
-    $nickname = $request->get_param('nickname');
+    $nickname = tcl_check_nickname($request->get_param('nickname'), $username);
 
     if($password instanceof WP_Error) return $password;
+    if($username instanceof WP_Error) return $username;  
+    
+    $status = 200;
+    $data = array(
+      'email' => $email,
+      'password' => $password,
+      'username' => $username,
+      'nickname' => $nickname
+    );
+    $response = new WP_REST_Response( $data, $status );
+
+    return $response;
   }
 ?>

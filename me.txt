@@ -984,4 +984,5 @@ Chức năng Authentication và Post Comments
         WP_Error
     WP Register Route 3
         Validate dữ liệu người dùng gửi lên cho chức năng Register
+    WP Register Route 4
     
