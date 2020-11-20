@@ -968,4 +968,13 @@ Chức năng Authentication và Post Comments
     Login 2
         e.preventDefault();
     Logout
+    WP Register Route 1
+        Wordpress api handbook
+        https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints/
+        wp-api\wp-includes\rest-api\endpoints\class-wp-rest-users-controller.php
+            $this->namespace
+                -> wp/v2
+            $this->rest_base
+                -> users
+            check echo on Browser http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2
     
