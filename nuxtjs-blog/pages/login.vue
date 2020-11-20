@@ -9,16 +9,31 @@
             <form action="">
               <div class="form-control">
                 <label for="">Username</label>
-                <input type="text" placeholder="Enter Username ...">
+                <input
+                  v-model="username"
+                  type="text"
+                  placeholder="Enter Username ...">
               </div>
               <div class="form-control">
                 <label for="">Password</label>
-                <i class="toggle-password ion-eye"></i>
-                <input type="password" placeholder="Enter Password ...">
+                <i
+                  class="toggle-password"
+                  v-bind:class="togglePassword"
+                  v-on:click="handleShowPassword"
+                ></i>
+                <input
+                  v-model="password"
+                  v-bind:type="typePassword"
+                  placeholder="Enter Password ...">
               </div>
               <div class="d-flex tcl-jc-between tcl-ais-center">
-                <button class="btn btn-primary btn-size-large">Submit</button>
-                <a href="register.html">Regiter</a>
+                <AppButton
+                  isSizeLarge
+                  type="primary"
+                  v-bind:isLoading="isLoading"
+                  v-on:click.native="handleSubmit"
+                >Đăng nhập</AppButton>
+                <nuxt-link to="/register">Đăng ký</nuxt-link>
               </div>
             </form>
           </div>
@@ -30,8 +45,68 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   middleware: 'notAuthenticated',
+  data() {
+    return {
+      isLoading: false,
+      username: '',
+      password: '',
+      isShowPassword: false
+    }
+  },
+  computed: {
+    typePassword() {
+      if (this.isShowPassword) {
+        return 'text';
+      }
+      return 'password';
+    },
+    togglePassword() {
+      return {
+        'ion-eye': !this.isShowPassword,
+        'ion-eye-disabled': this.isShowPassword
+      }
+    }
+  },
+  methods: {
+    ...mapActions({
+      actLogin: 'auth/actLogin'
+    }),
+    handleSubmit(e) {
+      e.preventDefault();
+
+      if (this.username && this.password) {
+        this.actLogin({
+          username: this.username,
+          password: this.password
+        })
+        .then(res => {
+          if (res.ok) {
+            alert('Dang nhap thanh cong');
+            this.$router.push('/');
+          } else {
+            alert("Dang nhap that bai.");
+            // switch (res.error) {
+            //   case "[jwt_auth] incorrect_password":
+            //     alert("Mat khau khong hop le!");
+            //     break;
+            //   case "[jwt_auth] invalid_username":
+            //     alert("Username khong hop le");
+            //     break;
+            //   default:
+            //     alert("Dang nhap that bai.")
+            //     break;
+            // }
+          }
+        })
+      }
+    },
+    handleShowPassword() {
+      this.isShowPassword = !this.isShowPassword
+    }
+  }
 }
 </script>
 
