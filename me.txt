@@ -977,4 +977,9 @@ Chức năng Authentication và Post Comments
             $this->rest_base
                 -> users
             check echo on Browser http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2
+    WP Register Route 2
+        /wp/v2/users/register
+        {{base_url}}/users/register
+        WP_REST_Response
+        WP_Error
     

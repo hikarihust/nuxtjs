@@ -1,4 +1,6 @@
 <?php
+  require_once ABSPATH . 'wp-custom-api-users.php';
+
   add_action( 'rest_api_init', function () {
     // Get Image Thumbnail by featured_media id
     register_rest_field('post',
