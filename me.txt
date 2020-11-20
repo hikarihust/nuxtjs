@@ -963,4 +963,6 @@ Chức năng Authentication và Post Comments
     Post Reply Cmt 3
     Post Reply Cmt 4
         callback() in javascript
+    Login 1
+        https://nuxtjs.org/docs/2.x/components-glossary/pages-middleware
     
