@@ -16,7 +16,7 @@
       </li>
     </ul>
 
-    <div class="comments__hidden" v-if="comment.comment_reply_count - commentsReplyPaging.commentsReply.length !== 0">
+    <div class="comments__hidden" v-if="comment.comment_reply_count - commentsReplyPaging.commentsReply.length > 0">
       <a href="#" v-on:click.prevent="handleLoadReplyComments">
         <i class="icons ion-ios-undo"></i>
         Xem thêm {{ comment.comment_reply_count - commentsReplyPaging.commentsReply.length }} câu trả lời

@@ -33,6 +33,16 @@ export default {
       ];
     }
 
+    if (
+      state.hashCommentsReplyPaging[key] &&
+      state.hashCommentsReplyPaging[key].curPage === 0
+    ) {
+      data.commentsReply = [
+        ...data.commentsReply,
+        ...state.hashCommentsReplyPaging[key].commentsReply
+      ]
+    }
+
     state.hashCommentsReplyPaging = {
       ...state.hashCommentsReplyPaging,
       [key]: data,
