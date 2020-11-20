@@ -102,15 +102,28 @@ export default {
     handleReplyEvent() {
       this.isShowFormReply = !this.isShowFormReply;
     },
-    handlePostReplyComment({ content }) {
+    handlePostReplyComment({ content, callback }) {
       this.actPostNewComment({
         content,
         post: this.comment.post,
         parent: this.parentId,
       })
       .then(res => {
+        callback();
         if (res.ok) {
           this.commentsExclude.push(res.comment.id);
+        } else {
+          switch (res.error) {
+            case "comment_duplicate":
+              alert("Bình luận bị trùng, vui lòng kiểm tra lại!");
+              break;
+            case "comment_flood":
+              alert("Nghi vấn spam, vui lòng bình luận chậm lại!");
+              break;
+            default:
+              alert(res.error);
+              break;
+          }
         }
       })
     }

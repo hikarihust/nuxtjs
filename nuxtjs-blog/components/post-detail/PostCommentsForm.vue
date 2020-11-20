@@ -47,7 +47,12 @@ export default {
     handleSubmitComment() {
       const data = {
         content: this.content,
+        callback: () => {
+          this.content = '';
+          this.isLoading = false;
+        }
       }
+      this.isLoading = true;
       this.$emit('postCommentEvent', data)
     }
   },

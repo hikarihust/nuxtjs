@@ -87,8 +87,18 @@ export default {
           comment: response.data
         }
       }
+      return {
+        ok: false,
+        error: response.message
+      }
     } catch (e) {
       console.error(e);
+      if (e.response && e.response.data) {
+        return {
+          ok: false,
+          error: e.response.data.code
+        }
+      }
       return {
         ok: false,
         error: e.message,
