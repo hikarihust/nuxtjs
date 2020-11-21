@@ -53,11 +53,30 @@ export default {
       ]);
     }
   },
+  data() {
+    return {
+      idTimeOut: null
+    }
+  },
   computed: {
     ...mapState({
       post: state => state.posts.postDetail
     })
   },
+  mounted () {
+    this.idTimeOut = setTimeout(() => {
+      if (this.post) {
+        this.$wpApi.post('/post-views-counter/view-post', {
+          id: this.post.id
+        })
+      }
+    }, 10000);
+  },
+  destroyed () {
+    if (this.idTimeOut) {
+      clearTimeout(this.idTimeOut)
+    }
+  }
 }
 </script>
 

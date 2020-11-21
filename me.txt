@@ -991,4 +991,22 @@ Chức năng Authentication và Post Comments
         get_option( string $option, mixed $default = false )
             Retrieves an option value based on an option name.
     Call Register API
+Chức năng tính số lượt Views
+    Plugin Post Views Counter đã được cài trước đó
+    Plugin này giúp thống kê số lượng xem của bài viết bằng cách tạo table mới là wp_post_views
+    Mỗi lần truy cập vào 1 bài viết nào đó -> phải cập nhật lại số lượt xem của bài viết đó
+    http://learning-nuxtjs.xyz/wp-api/wp-json/
+        /post-views-counter/view-post
+    Khi Api view-post được gọi thì Response Headers của Server trả về sẽ Set 1 giá trị Cookie pvc_visits[0] ở dạng 
+        1606036305b12: 1606036305 là thời gian xem , 12 là id của bài viết 
+    Lúc này nếu tiếp tục Refresh lại bài viết, thì Api view-post tiếp tục được gọi nhưng giá trị cookie pvc_visits[0] đã tồn tại 
+        và được gửi lên Server -> Thực hiện lấy giá trị cookie đó so sánh với giá trị time để xem mình đã xem trong thời điểm nào.
+        Nếu xem rồi thì không thực hiện tăng số lượt xem của bài viết đó 
+    Vuejs Lifecycle destroyed: Khi thoát trang, lúc này phải kiểm tra id của setTimeout có tồn tại không, nếu có thì phải xóa đi 
+        để không thực hiện trong setTimeout 
+    Để Server có thể tính được khoảng time để tính lượt xem tiếp theo 
+        http://learning-nuxtjs.xyz/wp-api/wp-admin/
+        -> Settings -> Post Views Counter
+        Counter Mode: REST API
+        Count Interval: Set giá trị để tính khoảng time 
     
