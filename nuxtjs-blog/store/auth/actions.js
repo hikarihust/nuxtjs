@@ -62,5 +62,31 @@ export default {
         error: e.message
       }
     }
+  },
+  async actRegister({ dispatch }, { username, password, email, nickname }) {
+    try {
+      const response = await this.$api.post('/users/register', {
+        username,
+        password,
+        email,
+        nickname
+      });
+
+      if (response.status === 201) {
+        return await dispatch('actLogin', { username, password });
+      }
+    } catch(e) {
+      if (e.response && e.response.data) {
+        return {
+          ok: false,
+          error: e.response.data.code
+        }
+      }
+
+      return {
+        ok: false,
+        error: e.message
+      }
+    }
   }
 }

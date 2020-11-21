@@ -76,7 +76,7 @@ export default {
     }),
     handleSubmit(e) {
       e.preventDefault();
-
+      this.isLoading = true;
       if (this.username && this.password) {
         this.actLogin({
           username: this.username,
@@ -100,6 +100,7 @@ export default {
             //     break;
             // }
           }
+          this.isLoading = false;
         })
       }
     },

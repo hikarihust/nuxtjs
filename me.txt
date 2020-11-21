@@ -990,4 +990,5 @@ Chức năng Authentication và Post Comments
             Insert a user into the database.
         get_option( string $option, mixed $default = false )
             Retrieves an option value based on an option name.
+    Call Register API
     
