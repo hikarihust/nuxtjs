@@ -3,14 +3,22 @@
     <a-layout id="components-layout-demo-custom-trigger">
       <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
         <div class="logo" />
-        <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
-          <a-menu-item key="1">
-            <a-icon type="user" />
-            <span>Hồ sơ của tôi</span>
+        <a-menu
+          theme="dark"
+          mode="inline"
+          :selectedKeys="selectedKeys"
+        >
+          <a-menu-item key="/dashboard">
+            <nuxt-link to="/dashboard">
+              <a-icon type="user" />
+              <span>Hồ sơ của tôi</span>
+            </nuxt-link>
           </a-menu-item>
-          <a-menu-item key="2">
-            <a-icon type="setting" />
-            <span>Đổi mật khẩu</span>
+          <a-menu-item key="/dashboard/password">
+            <nuxt-link to="/dashboard/password">
+              <a-icon type="setting" />
+              <span>Đổi mật khẩu</span>
+            </nuxt-link>
           </a-menu-item>
         </a-menu>
       </a-layout-sider>
@@ -45,6 +53,9 @@ export default {
     iconHeader() {
       return this.collapsed ? 'menu-unfold' : 'menu-fold';
     },
+    selectedKeys() {
+      return [ this.$route.path ]
+    }
   },
   methods: {
     handleToggleSidebar() {
