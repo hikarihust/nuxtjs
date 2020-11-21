@@ -92,6 +92,16 @@
   }
 
   function handle_route_users_register($request) {
+    $users_can_register = (boolean) get_option('users_can_register');
+
+    if(!$users_can_register) {
+			return new WP_Error(
+				'rest_user_can_register',
+				__( 'User can not register' ),
+				array( 'status' => 400 )
+			);
+    } 
+
     $email = $request->get_param('email');
     $username = tcl_check_username($request->get_param('username'));
     $password = tcl_check_user_password($request->get_param('password'));
@@ -100,14 +110,28 @@
     if($password instanceof WP_Error) return $password;
     if($username instanceof WP_Error) return $username;  
     
-    $status = 200;
     $data = array(
       'email' => $email,
       'password' => $password,
       'username' => $username,
       'nickname' => $nickname
     );
-    $response = new WP_REST_Response( $data, $status );
+
+    $userIdResult = wp_insert_user(array(
+      'user_email' => $email,
+      'user_pass'  => $password,
+      'user_login' => $username,
+      'nickname'   => $nickname,
+    ));
+
+    if($userIdResult instanceof WP_Error) {
+      return $userIdResult;
+    }
+
+    $response = new WP_REST_Response( array(
+      'author' => $userIdResult,
+      'status' => 201
+    ), 201 );
 
     return $response;
   }

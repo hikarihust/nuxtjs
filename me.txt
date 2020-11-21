@@ -985,4 +985,9 @@ Chức năng Authentication và Post Comments
     WP Register Route 3
         Validate dữ liệu người dùng gửi lên cho chức năng Register
     WP Register Route 4
+    WP Register Route 5
+        wp_insert_user( array|object|WP_User $userdata )
+            Insert a user into the database.
+        get_option( string $option, mixed $default = false )
+            Retrieves an option value based on an option name.
     
