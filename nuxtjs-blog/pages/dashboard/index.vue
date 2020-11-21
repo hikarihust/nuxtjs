@@ -1,9 +1,13 @@
 <template>
   <div>
-    <h1>Page / Dashboard > index.vue</h1>
-    <a-button type="primary">
-      Primary
-    </a-button>
+    <a-row :gutter="30">
+      <a-col :span="12">
+        col-12
+      </a-col>
+      <a-col :span="12">
+        col-12
+      </a-col>
+    </a-row>
   </div>
 </template>
 
