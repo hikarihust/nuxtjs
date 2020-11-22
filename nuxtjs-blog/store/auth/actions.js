@@ -90,7 +90,30 @@ export default {
     }
   },
   async actUploadAvatar({ state }, { file }) {
+    try {
+      const token = state.token;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }
+      const formData = new FormData();
 
+      formData.append('file', file);
+
+      const response = await this.$api.post('/media', formData, config);
+
+      return {
+        ok: true,
+        data: response.data
+      }
+
+    } catch(e) {
+      return {
+        ok: false,
+        error: e.message
+      }
+    }
   },
   async actUpdateProfile({ commit, dispatch, state }, {
     file,
@@ -101,18 +124,44 @@ export default {
   }) {
     try {
       const token = state.token;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }
       const data = {
         nickname,
         last_name,
         first_name,
         description,
       }
+      if (file) {
+        const resMedia = await dispatch('actUploadAvatar', { file });
 
-      console.log('token', token);
-      console.log('data', data);
-      console.log('file', file);
+        if (!resMedia.ok) {
+          return {
+            ok: false,
+            error: resMedia.error
+          }
+        }
+
+        data.simple_local_avatar = {
+          media_id: resMedia.data.id
+        }
+      }
+
+      const resUser = await this.$api.put('/users/me', data, config);
+      const user = resUser.data;
+      commit('setCurrentUser', { user, token });
+      return {
+        ok: true,
+        data: user
+      }
     } catch(e) {
-
+      return {
+        ok: false,
+        error: e.message
+      }
     }
   }
 }

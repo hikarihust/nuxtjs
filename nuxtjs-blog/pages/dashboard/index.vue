@@ -61,7 +61,7 @@
 
           <!-- Button Submit -->
           <a-form-item :wrapper-col="{ span: 16, offset: 8 }">
-            <a-button type="primary" html-type="submit">
+            <a-button type="primary" html-type="submit" :loading="loading">
               Cập nhật thông tin
             </a-button>
           </a-form-item>
@@ -150,6 +150,24 @@ export default {
           }
           this.loading = true
           this.actUpdateProfile(data)
+            .then(res => {
+              if (res.ok) {
+                this.fileUpload = {
+                  file: null,
+                  base64: ''
+                }
+                this.$notification.success({
+                  message: 'Thanh cong',
+                  description: 'Cap nhat profile thanh cong',
+                });
+              } else {
+                this.$notification.error({
+                  message: 'Có lỗi xảy ra',
+                  description: res.error,
+                });
+              }
+              this.loading = false;
+            })
         }
       });
     },
