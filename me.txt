@@ -1064,4 +1064,28 @@ Chức năng Update Profile vơi Ant Design
                     "media_id": 54
                 }
             }
+    WP Custom Roles
+        Roles and capabilities
+            https://wordpress.org/support/article/roles-and-capabilities/
+        Custom WP để cấp quyền cho 1 user để nó có khả năng Upload lên 1 hình ảnh
+        Đối với các use sau khi đăng ký vào hệ thống thì mặc định nó được cấp quyền là "Subscriber", đây là quyền có cấp 
+            thấp nhất, chỉ có quyền đọc thông tin ở trong trang web 
+        Đối với user được cấp quyền từ "Author" trở lên thì mới có quyền "upload_files"
+        -> Phải cấp cho user với quyền "Subscriber" thêm quyền mới là "upload_files"
+            upload_files: true
+            -> wp-includes/class-wp-roles.php
+                add_cap()
+        wordpress get roles 
+            https://developer.wordpress.org/reference/functions/wp_roles/
+        wp_roles()
+            Retrieves the global WP_Roles instance and instantiates it if necessary.
+        Check value of wp_roles()
+            echo json_encode(array(
+                'key' => wp_roles()
+            ));
+            http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2
+        WP_Roles::add_cap( string $role, string $cap, bool $grant = true )
+            Add capability to role.
+        current_user_can( string $capability, mixed $args )
+            Returns whether the current user has the specified capability.
     

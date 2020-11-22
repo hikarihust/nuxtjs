@@ -39,6 +39,15 @@
     );
   });
 
+  add_action( 'rest_api_init', function () {
+    $wpRoles = wp_roles();
+    $capSubscriber = $wpRoles->get_role('subscriber');
+
+    if(! $capSubscriber->capabilities['upload_files']) {
+      $wpRoles->add_cap('subscriber', 'upload_files');
+    }
+  });
+
   function get_rest_featured_media_url($post, $field_name, $request) {
     $post_id = $post['id'];
     // $media_id = $post['featured_media'];
