@@ -1041,4 +1041,6 @@ Chức năng Update Profile vơi Ant Design
         apply_filters( 'rest_prepare_user', WP_REST_Response $response, WP_User $user, WP_REST_Request $request )
             Filters user data returned from the REST API.
     Ant Form 3
+    Ant Upload 1
+        Notifications: https://antdv.com/components/notification/#Notification
     
