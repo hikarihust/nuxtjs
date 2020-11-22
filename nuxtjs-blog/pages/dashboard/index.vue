@@ -74,11 +74,9 @@
           list-type="picture-card"
           class="cus-avatar-uploader avatar-uploader"
           :show-upload-list="false"
-          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-          :before-upload="beforeUpload"
-          @change="handleChange"
+          :customRequest="handleCustomRequest"
         >
-          <img v-if="imageUrl" :src="imageUrl" alt="avatar" />
+          <img v-if="getAvatar" :src="getAvatar" alt="avatar" />
           <div v-else>
             <a-icon :type="loading ? 'loading' : 'plus'" />
             <div class="ant-upload-text">
@@ -92,21 +90,18 @@
 </template>
 
 <script>
-function getBase64(img, callback) {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
-  reader.readAsDataURL(img);
-}
-
 import { mapState } from 'vuex';
 export default {
   layout: 'admin',
   data() {
     return {
       loading: false,
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/220px-Image_created_with_a_mobile_phone.png',
       formLayout: 'horizontal',
       form: this.$form.createForm(this, { name: 'coordinated' }),
+      fileUpload: {
+        file: null,
+        base64: ''
+      }
     };
   },
   computed: {
@@ -116,6 +111,15 @@ export default {
     fullname() {
       return   this.currentUser.last_name + ' ' + this.currentUser.first_name
     },
+    getAvatar() {
+      if (this.fileUpload.base64) {
+        return this.fileUpload.base64;
+      }
+      if (this.currentUser.simple_local_avatar) {
+        return this.currentUser.simple_local_avatar.full;
+      }
+      return ''
+    }
   },
   methods: {
     handleSubmit(e) {
@@ -126,20 +130,7 @@ export default {
         }
       });
     },
-    handleChange(info) {
-      if (info.file.status === 'uploading') {
-        this.loading = true;
-        return;
-      }
-      if (info.file.status === 'done') {
-        // Get this url from response in real world.
-        getBase64(info.file.originFileObj, imageUrl => {
-          this.imageUrl = imageUrl;
-          this.loading = false;
-        });
-      }
-    },
-    beforeUpload(file) {
+    validateImages(file) {
       const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
       if (!isJpgOrPng) {
         // this.$message.error('You can only upload JPG file!');
@@ -147,6 +138,7 @@ export default {
           message: 'Có lỗi xảy ra',
           description: 'Định dạng hình ảnh không hợp lệ'
         });
+        return false;
       }
       const isLt2M = file.size / 1024 / 1024 < 2;
       if (!isLt2M) {
@@ -155,9 +147,24 @@ export default {
           message: 'Có lỗi xảy ra',
           description: 'Dung lượng hình ảnh phải nhỏ hơn 2MB'
         });
+        return false;
       }
-      return isJpgOrPng && isLt2M;
+      return true;
     },
+    handleCustomRequest({ file }) {
+      if (this.validateImages(file) === false) {
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.addEventListener('load', () => {
+        this.fileUpload = {
+          file: file,
+          base64: reader.result
+        }
+      });
+      reader.readAsDataURL(file);
+    }
   },
 }
 </script>

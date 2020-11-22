@@ -1043,4 +1043,6 @@ Chức năng Update Profile vơi Ant Design
     Ant Form 3
     Ant Upload 1
         Notifications: https://antdv.com/components/notification/#Notification
+    Ant Upload 2
+        customRequest of Upload 
     
