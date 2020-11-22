@@ -1031,4 +1031,13 @@ Chức năng Update Profile vơi Ant Design
     Ant Grid
     Ant Form 1
     Ant Form 2
+    WP Custom Users Me
+        wp-api\wp-includes\rest-api\endpoints\class-wp-rest-users-controller.php
+            $this->rest_base . '/me'
+            function get_current_item()
+            function prepare_item_for_response()
+        add_filter( string $tag, callable $function_to_add, int $priority = 10, int $accepted_args = 1 )
+            Hook a function or method to a specific filter action.
+        apply_filters( 'rest_prepare_user', WP_REST_Response $response, WP_User $user, WP_REST_Request $request )
+            Filters user data returned from the REST API.
     
