@@ -12,7 +12,7 @@
           <a-form-item label="Email">
             <a-input
               v-decorator="['email', {
-                initialValue: 'test Email'
+                initialValue: currentUser.email
               }]"
               v-bind:disabled="true"
             />
@@ -22,7 +22,7 @@
           <a-form-item label="Username">
             <a-input
               v-decorator="['user_name', {
-                  initialValue: 'test Username'
+                  initialValue: currentUser.user_name
               }]"
               v-bind:disabled="true"
             />
@@ -34,7 +34,7 @@
                   rules: [
                     { required: true, message: 'Nickname bắt buộc phải nhập!' }
                   ],
-                  initialValue: 'test nickname'
+                  initialValue: currentUser.nickname
               }]"
             />
           </a-form-item>
@@ -45,7 +45,7 @@
                   rules: [
                     { required: true, message: 'Fullname bắt buộc phải nhập!' }
                   ],
-                  initialValue: 'test fullname'
+                  initialValue: fullname
               }]"
             />
           </a-form-item>
@@ -53,7 +53,7 @@
           <a-form-item label="Giới thiệu bản thân">
             <a-textarea
               v-decorator="['description', {
-                initialValue: 'test description'
+                initialValue: currentUser.description
               }]"
               v-bind:auto-size="{ minRows: 5 }"
             />
@@ -75,6 +75,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   layout: 'admin',
   data() {
@@ -82,6 +83,14 @@ export default {
       formLayout: 'horizontal',
       form: this.$form.createForm(this, { name: 'coordinated' }),
     };
+  },
+  computed: {
+    ...mapState({
+      currentUser: state => state.auth.currentUser
+    }),
+    fullname() {
+      return   this.currentUser.last_name + ' ' + this.currentUser.first_name
+    },
   },
   methods: {
     handleSubmit(e) {
@@ -91,13 +100,7 @@ export default {
           console.log('Received values of form: ', values);
         }
       });
-    },
-    handleSelectChange(value) {
-      console.log(value);
-      this.form.setFieldsValue({
-        note: `Hi, ${value === 'male' ? 'man' : 'lady'}!`,
-      });
-    },
+    }
   },
 }
 </script>
