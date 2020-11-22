@@ -88,5 +88,31 @@ export default {
         error: e.message
       }
     }
+  },
+  async actUploadAvatar({ state }, { file }) {
+
+  },
+  async actUpdateProfile({ commit, dispatch, state }, {
+    file,
+    nickname,
+    last_name,
+    first_name,
+    description,
+  }) {
+    try {
+      const token = state.token;
+      const data = {
+        nickname,
+        last_name,
+        first_name,
+        description,
+      }
+
+      console.log('token', token);
+      console.log('data', data);
+      console.log('file', file);
+    } catch(e) {
+
+    }
   }
 }

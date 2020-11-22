@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 export default {
   layout: 'admin',
   data() {
@@ -122,11 +122,34 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      actUpdateProfile: 'auth/actUpdateProfile'
+    }),
+    splitFullName(fullNameStr) {
+      var arrFullName = fullNameStr.split(' ').filter(str => str !== '');
+
+      var first_name = arrFullName.pop();
+      var last_name = arrFullName.join(' ');
+
+      return {
+        first_name,
+        last_name
+      }
+    },
     handleSubmit(e) {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log('Received values of form: ', values);
+          const { first_name, last_name } = this.splitFullName(values.fullname);
+          const data = {
+            file: this.fileUpload.file,
+            first_name,
+            last_name,
+            nickname: values.nickname,
+            description: values.description,
+          }
+          this.loading = true
+          this.actUpdateProfile(data)
         }
       });
     },
