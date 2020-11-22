@@ -1090,4 +1090,17 @@ Chức năng Update Profile vơi Ant Design
             Returns whether the current user has the specified capability.
     Call API Update Profile 1
     Call API Update Profile 2
+Chức năng Change Password
+    WP Custom Password
+        Tạo ra API mới giống như trong phần đăng ký tài khoản 
+        is_user_logged_in()
+            Determines whether the current visitor is a logged in user.
+        is_wp_error( mixed $thing )
+            Check whether variable is a WordPress Error.
+        wp_get_current_user()
+            Retrieve the current user object.
+        wp_authenticate( string $username, string $password )
+            Authenticate a user, confirming the login credentials are valid.
+        wp_update_user( array|object|WP_User $userdata )
+            Update a user in the database.
     
