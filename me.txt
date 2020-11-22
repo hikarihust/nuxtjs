@@ -1045,4 +1045,23 @@ Chức năng Update Profile vơi Ant Design
         Notifications: https://antdv.com/components/notification/#Notification
     Ant Upload 2
         customRequest of Upload 
+    WP API Profile
+        API upload file(file Object)
+            http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2
+            -> /wp/v2/media
+        API for update infor(text data)
+            http://learning-nuxtjs.xyz/wp-api/wp-json/wp/v2
+            /wp/v2/users/me
+        Update media first to get id of media object
+            {{base_url}}/media
+                form-data
+                param to send is "file"
+        Update Profile
+            {{base_url}}/users/me
+            {
+                "description": "Testtttt",
+                "simple_local_avatar": {
+                    "media_id": 54
+                }
+            }
     
