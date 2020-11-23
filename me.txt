@@ -1103,4 +1103,12 @@ Chức năng Change Password
             Authenticate a user, confirming the login credentials are valid.
         wp_update_user( array|object|WP_User $userdata )
             Update a user in the database.
+    Change Password 1
+        handleConfirmBlur()
+            Sự kiện blur mô tả việc người dùng đã nhấn chuột vào ô input
+                -> Sau đó nhấn chuột ra ngoài -> sự kiện blur nó sẽ được kích hoạt
+            Nếu chưa nhập -> confirmDirty = false, value = ''
+                -> false || false -> false
+            nếu nhập thông tin rồi : confirmDirty = false, value = 'abc'
+                -> false || true -> true
     
