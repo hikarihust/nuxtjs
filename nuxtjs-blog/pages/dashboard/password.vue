@@ -38,7 +38,7 @@
                       message: 'Mat khau moi la bat buoc!',
                     },
                     {
-                      validator: validateToNextPassword,
+                      validator: validateToConfirmPassword,
                     },
                   ],
                 },
@@ -59,7 +59,7 @@
                       message: 'Vui long nhap xac nhan mat khau moi',
                     },
                     {
-                      validator: compareToFirstPassword,
+                      validator: compareToNewPassword,
                     },
                   ],
                 },
@@ -67,6 +67,13 @@
               type="password"
               @blur="handleConfirmBlur"
             />
+          </a-form-item>
+
+          <!-- Button Submit -->
+          <a-form-item :wrapper-col="{ span: 16, offset: 8 }">
+            <a-button type="primary" html-type="submit" :loading="loading">
+              Đổi mật khẩu
+            </a-button>
           </a-form-item>
         </a-form>
       </a-col>
@@ -79,38 +86,46 @@ export default {
   layout: 'admin',
   data() {
     return {
-      confirmDirty: false,
+      loading: false,
+      isTouchedConfirmValue: false,
       form: this.$form.createForm(this, { name: 'coordinated' }),
     }
   },
   methods: {
     handleSubmit(e) {
       e.preventDefault();
+      this.form.validateFieldsAndScroll((err, values) => {
+        if (!err) {
+          console.log('Received values of form: ', values);
+        }
+      });
     },
     handleConfirmBlur(e) {
       const value = e.target.value;
-      this.confirmDirty = this.confirmDirty || !!value;
+      this.isTouchedConfirmValue = this.isTouchedConfirmValue || !!value;
       // Sự kiện blur mô tả việc người dùng đã nhấn chuột vào ô input
       // -> Sau đó nhấn chuột ra ngoài -> sự kiện blur nó sẽ được kích hoạt
-      // Nếu chưa nhập -> confirmDirty = false, value = ''
+      // Nếu chưa nhập -> isTouchedConfirmValue = false, value = ''
         // -> false || false -> false
-      // nếu nhập thông tin rồi : confirmDirty = false, value = 'abc'
+      // nếu nhập thông tin rồi : isTouchedConfirmValue = false, value = 'abc'
         //-> false || true -> true
     },
-    compareToFirstPassword(rule, value, callback) {
+    compareToNewPassword(rule, confirm_new_password, callback) {
       const form = this.form;
-      if (value && value !== form.getFieldValue('password')) {
-        callback('Two passwords that you enter is inconsistent!');
+      if (confirm_new_password && confirm_new_password !== form.getFieldValue('new_password')) {
+        callback('Mật khẩu xác nhận không khớp!');
       } else {
-        callback();
+        callback(); // Không có dòng thông báo lỗi
       }
     },
-    validateToNextPassword(rule, value, callback) {
+    validateToConfirmPassword(rule, new_password, callback) {
       const form = this.form;
-      if (value && this.confirmDirty) {
-        form.validateFields(['confirm'], { force: true });
+      if (new_password && this.isTouchedConfirmValue) {
+        // Nếu người dùng đã nhập vào new password
+        // Và cũng đã nhập thông tin vào ô input thứ 3
+        form.validateFields(['confirm_new_password'], { force: true }); // Gọi hàm validate dữ liệu cho confirm_new_password
       }
-      callback();
+      callback(); // Không có dòng thông báo lỗi
     },
   }
 }
