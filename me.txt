@@ -1113,4 +1113,17 @@ Chức năng Change Password
                 -> false || true -> true
     Change Password 2
     Change Password 3
+User Change Password - Prevent
+    Bảo vệ API users/me không muốn người dùng truyền lên 1 số tham số nhất định
+    Nếu gọi đến API users/me và có truyền thêm tham số password hay email -> ngăn chặn luôn bên phía backend
+    Rest request before callback
+        apply_filters( 'rest_request_before_callbacks', WP_REST_Response|WP_HTTP_Response|WP_Error|mixed $response, 
+            array $handler, WP_REST_Request $request )
+        Filters the response before executing any REST API callbacks.
+    WP_REST_Request::get_route()
+        Retrieves the route that matched the request.
+    {{base_url}}/users/me
+    {
+        "password": "123123123"
+    }
     

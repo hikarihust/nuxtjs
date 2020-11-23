@@ -136,4 +136,22 @@
 
     return $response;
   }, 10, 3);
+
+  // Can thiệp vào trước khi WP gọi những call back
+  add_filter( 'rest_request_before_callbacks', function($response, $handler, $request) {
+    $route = $request->get_route();
+    if ($route === '/wp/v2/users/me') {
+      $password = $request->get_param('password');
+      $email = $request->get_param('email');
+      if ($password || $email) {
+        return new WP_Error(
+          'rest_forbidden',
+          __( 'Bạn không được phép truy cập.' ),
+          array( 'status' => 403 )
+        );
+      }
+    }
+
+    return $request;
+  }, 10, 3 )
 ?>
