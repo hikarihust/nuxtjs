@@ -163,5 +163,40 @@ export default {
         error: e.message
       }
     }
+  },
+  async actChangePassword({ state }, {
+    password,
+    new_password,
+    confirm_new_password,
+  }) {
+    try {
+      const data = {
+        password,
+        new_password,
+        confirm_new_password,
+      }
+      const token = state.token;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }
+      const response = await this.$api.put('/users/password', data, config);
+      return {
+        ok: true
+      }
+
+    } catch(e) {
+      if (e.response) {
+        return {
+          ok: false,
+          error: e.response.data.message
+        }
+      }
+      return {
+        ok: false,
+        error: e.message //
+      }
+    }
   }
 }

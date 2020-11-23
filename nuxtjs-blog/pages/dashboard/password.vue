@@ -10,7 +10,7 @@
         >
           <!-- Old Password -->
           <a-form-item label="Password" has-feedback>
-            <a-input
+            <a-input-password
               v-decorator="[
                 'password',
                 {
@@ -22,13 +22,12 @@
                   ],
                 },
               ]"
-              type="password"
             />
           </a-form-item>
 
           <!-- New password -->
           <a-form-item label="New Password" has-feedback>
-            <a-input
+            <a-input-password
               v-decorator="[
                 'new_password',
                 {
@@ -43,13 +42,12 @@
                   ],
                 },
               ]"
-              type="password"
             />
           </a-form-item>
 
           <!-- Confirm password -->
           <a-form-item label="Confirm New Password" has-feedback>
-            <a-input
+            <a-input-password
               v-decorator="[
                 'confirm_new_password',
                 {
@@ -64,7 +62,6 @@
                   ],
                 },
               ]"
-              type="password"
               @blur="handleConfirmBlur"
             />
           </a-form-item>
@@ -82,6 +79,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   layout: 'admin',
   data() {
@@ -92,11 +90,31 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      actChangePassword: 'auth/actChangePassword'
+    }),
     handleSubmit(e) {
       e.preventDefault();
       this.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
-          console.log('Received values of form: ', values);
+          this.loading = true;
+          this.actChangePassword(values)
+            .then(res => {
+              this.loading = false;
+              if (res.ok) {
+                // Thanh cong
+                this.$notification.success({
+                  message: 'Thanh cong',
+                  description: 'Doi mat khau thanh cong',
+                });
+                this.form.resetFields();
+              } else {
+                this.$notification.error({
+                  message: 'Có lỗi xảy ra',
+                  description: res.error,
+                });
+              }
+            })
         }
       });
     },
