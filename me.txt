@@ -1127,3 +1127,24 @@ User Change Password - Prevent
         "password": "123123123"
     }
     
+    
+==================================================================================================================
+
+                                            Cài đặt NuxtJs và LAMP Stack với AWS
+
+phpmyadmin:
+    http://127.0.0.1:9999/phpmyadmin/
+Delete Schema:
+    C:\xampp\mysql\data
+Tạo User mới và Switch User trên Ubuntu
+    switch to root user: sudo su
+    Update password for root user 
+        passwd
+        123456
+    Server setup
+        Update software: apt update 
+        Upgrade software: apt upgrade 
+        Add new user: adduser username
+        Add user to "sudo" group: usermod -aG sudo username
+        Switch user: su username
+    
