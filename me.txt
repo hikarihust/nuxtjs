@@ -1147,4 +1147,19 @@ Tạo User mới và Switch User trên Ubuntu
         Add new user: adduser username
         Add user to "sudo" group: usermod -aG sudo username
         Switch user: su username
+Cài đặt NodeJs, Npm và Git trong Server bằng CMD
+    Install nodejs and npm 
+        sudo apt install nodejs npm
+    Install git 
+        sudo apt install git
+    update version nodejs
+        https://askubuntu.com/questions/426750/how-can-i-update-my-nodejs-to-the-latest-version
+        sudo npm cache clean -f
+        sudo npm install -g n
+        sudo n stable
+        sudo n rm 14.15.3
+        sudo npm uninstall -g n
+    restart terminal to see the updated node version
+        sudo su 
+        su ~
     
