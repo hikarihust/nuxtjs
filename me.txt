@@ -1223,4 +1223,12 @@ Cài đặt PHP trong Server bằng CMD
         DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
     sudo systemctl restart apache2
     sudo systemctl status apache2
+Cách trỏ Domain tới IP và DNS của AWS
+    https://mkyong.com/server/namecheap-domain-name-and-amazon-ec2/
+    http://techgenix.com/namecheap-aws-ec2-linux/
+    Manage DNS
+    Namecheap Manage DNS 
+    Associate NameCheap domain to Amazon EC2 instance
+    vudinhquang-dev.com
+    3.140.132.176
     
