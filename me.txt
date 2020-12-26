@@ -1199,4 +1199,20 @@ Cài đặt Apache và cấu hình Firewall
             |       `-- *.conf
             |-- sites-enabled
             |       `-- *.conf
+Cài đặt MySQL Server bằng CMD
+    Install MySQL Server
+        https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04
+        https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04#step-1-%E2%80%94-installing-mysql
+        sudo apt install mysql-server
+        sudo mysql_secure_installation
+        passwd: 12345678
+            Remove anonymous users? (Press y|Y for Yes, any other key for No) : Y
+            Disallow root login remotely? (Press y|Y for Yes, any other key for No) : N
+            Remove test database and access to it? (Press y|Y for Yes, any other key for No) : Y
+            Reload privilege tables now? (Press y|Y for Yes, any other key for No) : Y
+        sudo mysql
+        SELECT user,authentication_string,plugin,host FROM mysql.user;
+        ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+        FLUSH PRIVILEGES;
+        exit 
     
