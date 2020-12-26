@@ -1306,4 +1306,43 @@ Cài đặt và cấu hình Wordpress bằng Cmd
         sudo find /var/www/wp-api/ -type f -exec chmod 640 {} \;
         sudo vi wp-api/wp-config.php
         define('FS_METHOD', 'direct');
+Cấu hình Proxy với server NuxtJs
+    Config Proxy NuxtJs
+        https://rada.neocities.org/xampp-windows-proxy-server.html
+        /etc/apache2/sites-available/wp_api.conf
+
+        <VirtualHost *:80>
+            ProxyPass /wp-api/ http://127.0.0.1:9999/wp-api/
+            ProxyPassReverse /wp-api/ http://127.0.0.1:9999/wp-api/
+
+            ProxyPass / http://127.0.0.1:3000/
+            ProxyPassReverse / http://127.0.0.1:3000/
+
+            ProxyRequests On
+            ProxyPreserveHost On
+        </VirtualHost>
+
+        <VirtualHost *:9999>
+            ServerAdmin webmaster@localhost
+            ServerName vudinhquang-dev.com
+            ServerAlias www.vudinhquang-dev.com
+            DocumentRoot /var/www
+            ErrorLog ${APACHE_LOG_DIR}/error.log
+            CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+            <Directory /var/www/>
+                AllowOverride All
+            </Directory>
+        </VirtualHost>
+
+    sudo apache2ctl configtest
+    sudo systemctl restart apache2
+    /etc/apache2/ports.conf to Listen 9999
+    /home/ubuntu/nuxtjs/demo-ubuntu
+        npm run start
+    http://www.vudinhquang-dev.com/ 
+    http://www.vudinhquang-dev.com/wp-api/
+        to check
+    ERROR  EACCES: permission denied, rmdir '/home/ubuntu/nuxtjs/demo-ubuntu/.nuxt/views'
+        sudo chown -R $USERNAME /home/ubuntu
     
