@@ -1290,4 +1290,20 @@ Cài đặt Proxy và Proxy HTTP module
         sudo apache2ctl configtest
         sudo systemctl restart apache2
         apache2ctl -M
+Cài đặt và cấu hình Wordpress bằng Cmd
+    Downloading WordPress
+        https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-ubuntu-18-04
+        cd /tmp
+        curl -O https://wordpress.org/latest.tar.gz
+        tar xzvf latest.tar.gz
+        touch /tmp/wordpress/.htaccess
+        cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php
+        mkdir /tmp/wordpress/wp-content/upgrade
+        sudo cp -a /tmp/wordpress/. /var/www/wp-api
+    Configuring the WordPress Directory
+        sudo chown -R www-data:www-data /var/www/wp-api
+        sudo find /var/www/wp-api/ -type d -exec chmod 750 {} \;
+        sudo find /var/www/wp-api/ -type f -exec chmod 640 {} \;
+        sudo vi wp-api/wp-config.php
+        define('FS_METHOD', 'direct');
     
