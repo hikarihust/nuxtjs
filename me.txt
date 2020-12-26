@@ -1270,4 +1270,14 @@ Tạo Database và cài đặt PHP Extension
         sudo apt update
         sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip
         sudo systemctl restart apache2
+Cài đặt và cấu hình Apache và Rewrite module
+    https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-ubuntu-18-04
+    Rewrite module
+    /etc/apache2/sites-available/wp_api.conf
+        <Directory /var/www/wp-api/>
+            AllowOverride All
+        </Directory>
+    sudo a2enmod rewrite
+    sudo apache2ctl configtest
+    sudo systemctl restart apache2
     
