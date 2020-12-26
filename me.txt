@@ -1280,4 +1280,14 @@ Cài đặt và cấu hình Apache và Rewrite module
     sudo a2enmod rewrite
     sudo apache2ctl configtest
     sudo systemctl restart apache2
+Cài đặt Proxy và Proxy HTTP module
+    Proxy HTTP
+        apache2ctl -M
+        apache2ctl -M | grep rewrite_module
+        apache2ctl -M | grep proxy
+        sudo a2enmod proxy
+        sudo a2enmod proxy_http 
+        sudo apache2ctl configtest
+        sudo systemctl restart apache2
+        apache2ctl -M
     
