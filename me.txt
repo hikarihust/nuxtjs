@@ -1162,4 +1162,18 @@ Cài đặt NodeJs, Npm và Git trong Server bằng CMD
     restart terminal to see the updated node version
         sudo su 
         su ~
+Cài đặt NuxtJs trong Server bằng CMD
+    https://github.com/nuxt/create-nuxt-app
+    sudo npx create-nuxt-app demo-ubuntu
+    Project name: demo-ubuntu
+    Programming language: JavaScript
+    Package manager: Npm
+    UI framework: None
+    Linting tools: ESLint
+    Testing framework: None
+    Rendering mode: Universal (SSR / SSG)
+    Deployment target: Server (Node.js hosting)
+    jsconfig.jsson
+    What is your GitHub username?
+    Version control system: Git
     
