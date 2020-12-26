@@ -1224,6 +1224,8 @@ Cài đặt PHP trong Server bằng CMD
     sudo systemctl restart apache2
     sudo systemctl status apache2
 Cách trỏ Domain tới IP và DNS của AWS
+    Login Account
+        https://ap.www.namecheap.com/ 
     https://mkyong.com/server/namecheap-domain-name-and-amazon-ec2/
     http://techgenix.com/namecheap-aws-ec2-linux/
     Manage DNS
@@ -1231,4 +1233,25 @@ Cách trỏ Domain tới IP và DNS của AWS
     Associate NameCheap domain to Amazon EC2 instance
     vudinhquang-dev.com
     3.140.132.176
+Cấu hình Virtual Hosts trong Server
+    Config Virtual Hosts
+        sudo mkdir /var/www/wp-api
+        sudo chown -R $USER:$USER /var/www/wp-api
+        sudo chmod -R 755 /var/www/wp-api
+    touch index.php in /var/www/wp-api
+    touch wp_api.conf in /etc/apache2/sites-available/
+        <VirtualHost *:80>
+            ServerAdmin webmaster@localhost
+            ServerName vudinhquang-dev.com
+            ServerAlias www.vudinhquang-dev.com
+            DocumentRoot /var/www/wp-api
+            ErrorLog ${APACHE_LOG_DIR}/error.log
+            CustomLog ${APACHE_LOG_DIR}/access.log combined
+        </VirtualHost>
+    enable the file with the a2ensite:
+        sudo a2ensite wp_api.conf
+    Disable the default site defined in 000-default.conf
+        sudo a2dissite 000-default.conf
+    sudo apache2ctl configtest
+    sudo systemctl restart apache2
     
