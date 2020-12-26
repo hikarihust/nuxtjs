@@ -1345,4 +1345,9 @@ Cấu hình Proxy với server NuxtJs
         to check
     ERROR  EACCES: permission denied, rmdir '/home/ubuntu/nuxtjs/demo-ubuntu/.nuxt/views'
         sudo chown -R $USERNAME /home/ubuntu
+Cấu hình Proxy dành cho WP API
+    Config Proxy WP API
+        Site title: AWS API AWS
+        username: quang
+    Install plugin post views counter
     
