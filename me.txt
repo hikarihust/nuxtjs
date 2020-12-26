@@ -1254,4 +1254,20 @@ Cấu hình Virtual Hosts trong Server
         sudo a2dissite 000-default.conf
     sudo apache2ctl configtest
     sudo systemctl restart apache2
+Tạo Database và cài đặt PHP Extension
+    Creating a MySQL Database and User for WordPress
+        https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-ubuntu-18-04
+        mysql -u root -p
+        password: passwprd 
+            because ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; 
+            have run 
+        ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345678'; 
+        FLUSH PRIVILEGES;
+        CREATE DATABASE wp_api DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+        GRANT ALL ON wp_api.* TO 'wp_api_quang'@'localhost' IDENTIFIED BY '12345678';
+        FLUSH PRIVILEGES;
+    Installing Additional PHP Extensions
+        sudo apt update
+        sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip
+        sudo systemctl restart apache2
     
