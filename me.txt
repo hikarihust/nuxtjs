@@ -1215,4 +1215,12 @@ Cài đặt MySQL Server bằng CMD
         ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
         FLUSH PRIVILEGES;
         exit 
+Cài đặt PHP trong Server bằng CMD
+    Install PHP
+        sudo apt install php libapache2-mod-php php-mysql
+    sudo vim /etc/apache2/mods-enabled/dir.conf
+        Move the PHP index file (highlighted above) to the first position after the DirectoryIndex specification, like this:
+        DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+    sudo systemctl restart apache2
+    sudo systemctl status apache2
     
