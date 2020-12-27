@@ -1140,13 +1140,13 @@ Tạo User mới và Switch User trên Ubuntu
     switch to root user: sudo su
     Update password for root user 
         passwd
-        123456
+        ->123456
     Server setup
         Update software: apt update 
         Upgrade software: apt upgrade 
-        Add new user: adduser username
-        Add user to "sudo" group: usermod -aG sudo username
-        Switch user: su username
+        Add new user: adduser ~
+        Add user to "sudo" group: usermod -aG sudo ~
+        Switch user: su ~
 Cài đặt NodeJs, Npm và Git trong Server bằng CMD
     Install nodejs and npm 
         sudo apt install nodejs npm
@@ -1164,11 +1164,14 @@ Cài đặt NodeJs, Npm và Git trong Server bằng CMD
         su ~
 Cài đặt NuxtJs trong Server bằng CMD
     https://github.com/nuxt/create-nuxt-app
-    sudo npx create-nuxt-app demo-ubuntu
+    sudo npm i -g create-nuxt-app
+    sudo npx create-nuxt-app demo-ubuntu    
     Project name: demo-ubuntu
     Programming language: JavaScript
-    Package manager: Npm
+    Package manager: Yarn
     UI framework: None
+    ? Nuxt.js modules: (Press <space> to select, <a> to toggle all, <i> to invert selection)
+        Axios
     Linting tools: ESLint
     Testing framework: None
     Rendering mode: Universal (SSR / SSG)
@@ -1210,7 +1213,7 @@ Cài đặt MySQL Server bằng CMD
             Disallow root login remotely? (Press y|Y for Yes, any other key for No) : N
             Remove test database and access to it? (Press y|Y for Yes, any other key for No) : Y
             Reload privilege tables now? (Press y|Y for Yes, any other key for No) : Y
-        sudo mysql
+        mysql -u root -p
         SELECT user,authentication_string,plugin,host FROM mysql.user;
         ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
         FLUSH PRIVILEGES;
@@ -1240,14 +1243,14 @@ Cấu hình Virtual Hosts trong Server
         sudo chmod -R 755 /var/www/wp-api
     touch index.php in /var/www/wp-api
     touch wp_api.conf in /etc/apache2/sites-available/
-        <VirtualHost *:80>
-            ServerAdmin webmaster@localhost
-            ServerName vudinhquang-dev.com
-            ServerAlias www.vudinhquang-dev.com
-            DocumentRoot /var/www/wp-api
-            ErrorLog ${APACHE_LOG_DIR}/error.log
-            CustomLog ${APACHE_LOG_DIR}/access.log combined
-        </VirtualHost>
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName vudinhquang-dev.com
+    ServerAlias www.vudinhquang-dev.com
+    DocumentRoot /var/www/wp-api
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
     enable the file with the a2ensite:
         sudo a2ensite wp_api.conf
     Disable the default site defined in 000-default.conf
@@ -1262,9 +1265,12 @@ Tạo Database và cài đặt PHP Extension
             because ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; 
             have run 
         ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345678'; 
+        -> passwd of root user is 12345678
         FLUSH PRIVILEGES;
-        CREATE DATABASE wp_api DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-        GRANT ALL ON wp_api.* TO 'wp_api_quang'@'localhost' IDENTIFIED BY '12345678';
+        select host, user from mysql.user;
+        DROP USER 'wp_api_quang'@'localhost'
+        CREATE USER 'wp_api_quang'@'localhost' IDENTIFIED BY 'qa12@!Qa2';
+        GRANT ALL ON wp_api.* TO 'wp_api_quang'@'localhost';
         FLUSH PRIVILEGES;
     Installing Additional PHP Extensions
         sudo apt update
@@ -1305,7 +1311,10 @@ Cài đặt và cấu hình Wordpress bằng Cmd
         sudo find /var/www/wp-api/ -type d -exec chmod 750 {} \;
         sudo find /var/www/wp-api/ -type f -exec chmod 640 {} \;
         sudo vi wp-api/wp-config.php
-        define('FS_METHOD', 'direct');
+        define( 'DB_NAME', 'wp_api' );
+        define( 'DB_USER', 'wp_api_quang' );
+        define( 'DB_PASSWORD', 'qa12@!Qa2' );
+        define('FS_METHOD', 'direct');        
 Cấu hình Proxy với server NuxtJs
     Config Proxy NuxtJs
         https://rada.neocities.org/xampp-windows-proxy-server.html
@@ -1341,13 +1350,22 @@ Cấu hình Proxy với server NuxtJs
     /home/ubuntu/nuxtjs/demo-ubuntu
         npm run start
     http://www.vudinhquang-dev.com/ 
-    http://www.vudinhquang-dev.com/wp-api/
+    http://www.vudinhquang-dev.com/wp-api/wp-admin/
         to check
     ERROR  EACCES: permission denied, rmdir '/home/ubuntu/nuxtjs/demo-ubuntu/.nuxt/views'
-        sudo chown -R $USERNAME /home/ubuntu
+        sudo chown -R $USER:$USER /home/ubuntu
 Cấu hình Proxy dành cho WP API
     Config Proxy WP API
         Site title: AWS API AWS
         username: quang
     Install plugin post views counter
-    
+Manage process trong Server với PM2
+    sudo apt install yarn
+    Clone sources from git
+    cd deploy/nuxtjs-blog/
+    sudo npm i @nuxtjs/axios
+    http://www.vudinhquang-dev.com/
+    https://nuxtjs.org/faq/deployment-pm2/
+    sudo npm install pm2 -g
+    sudo touch ecosystem.config.js
+    pm2 start
